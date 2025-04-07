@@ -2,26 +2,52 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 
-def get_api_dataframe(url):
-    
-    table = requests.get(url)
-    
-    df = pd.DataFrame(table.json())
-    
-    df.columns = df.iloc[0]
-    df = df[1:].reset_index(drop=True)
+# ===================================
+# Helper Functions
+# ===================================
 
-    return df
+def get_variable_name(table,label):
+    
+    """
+    Retrieve the variable family name corresponding to a given label from the ACS metadata table.
 
-def get_ACS_url(year,table,geo):
+    Parameters:
+        table (pd.DataFrame): A DataFrame containing ACS metadata, with at least 'Label' and 'Name' columns.
+        label (str): The descriptive label to search for in the 'Label' column.
+
+    Returns:
+        str or None: The corresponding variable name from the 'Name' column if the label is found;
+                     otherwise, returns None.
+    """
     
-    geo_pseudo_map = {
-        'state': 'pseudo(0100000US$0400000)',
-        'county': 'pseudo(0100000US$0500000)',
-        'congressional district': 'pseudo(0100000US$5000000)'
-    }
+    match = table.loc[table['Label'] == label, 'Name']
+    return match.iloc[0] if not match.empty else None
+
+def extract_label_name(labels):
     
-    return 'https://api.census.gov/data/' + year + '/acs/acs5/profile?get=group(' + table + ')&ucgid=' + geo_pseudo_map.get(geo) 
+    """
+    Extract short label names from a list of detailed label strings.
+
+    This function parses a list of label strings from ACS metadata
+    and extracts the most specific descriptor from each by splitting on '!!'.
+    It also prepends 'ucgid' to the list, which refers to a geographic identifier.
+
+    Parameters:
+        labels (list of str): A list of detailed label strings using '!!' as a delimiter.
+
+    Returns:
+        list of str: A new list of short label names with 'ucgid' as the first element.
+    """
+    
+    short_labels = ['ucgid']
+    for label in labels:
+        short_labels.append(label.split('!!')[-1])
+    
+    return short_labels
+
+# ===================================
+# Utility Functions
+# ===================================
 
 def get_ACS_metadata(year,table):
     
@@ -49,11 +75,6 @@ def get_ACS_metadata(year,table):
     # Return DataFrame
     return pd.DataFrame(rows, columns=headers)
 
-def get_variable_name(table,label):
-    
-    match = table.loc[table['Label'] == label, 'Name']
-    return match.iloc[0] if not match.empty else None
-
 def get_variables(table, year, labels):
     
     # get metadata table 
@@ -67,13 +88,31 @@ def get_variables(table, year, labels):
     # return list of variable names 
     return variables 
 
-def extract_label_name(labels):
+def get_api_dataframe(url):
     
-    short_labels = ['ucgid']
-    for label in labels:
-        short_labels.append(label.split('!!')[-1])
+    table = requests.get(url)
     
-    return short_labels
+    df = pd.DataFrame(table.json())
+    
+    df.columns = df.iloc[0]
+    df = df[1:].reset_index(drop=True)
+
+    return df
+
+def get_ACS_url(year,table,geo):
+    
+    geo_pseudo_map = {
+        'state': 'pseudo(0100000US$0400000)',
+        'county': 'pseudo(0100000US$0500000)',
+        'congressional district': 'pseudo(0100000US$5000000)'
+    }
+    
+    return 'https://api.census.gov/data/' + year + '/acs/acs5/profile?get=group(' + table + ')&ucgid=' + geo_pseudo_map.get(geo) 
+
+
+# ===================================
+# Public API Functions
+# ===================================
 
 def get_demo_data(table,year,geo,labels):
     
