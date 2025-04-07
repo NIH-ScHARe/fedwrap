@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 # Helper Functions
 # ===================================
 
-def get_variable_name(table,label):
+def get_variable_name(table,label,return_index=0):
     
     """
     Retrieve the variable family name corresponding to a given label from the ACS metadata table.
@@ -21,7 +21,7 @@ def get_variable_name(table,label):
     """
     
     match = table.loc[table['Label'] == label, 'Name']
-    return match.iloc[0] if not match.empty else None
+    return match.iloc[return_index] if not match.empty else None
 
 def extract_label_name(labels):
     
@@ -75,7 +75,7 @@ def get_ACS_metadata(year,table):
     # Return DataFrame
     return pd.DataFrame(rows, columns=headers)
 
-def get_variables(table, year, labels):
+def get_variables(table, year, labels, return_index=0):
     
     # get metadata table 
     variable_table = get_ACS_metadata(year,table)
@@ -83,7 +83,7 @@ def get_variables(table, year, labels):
     # iterate through each label and return variable name from table 
     variables = []
     for label in labels:
-        variables.append(get_variable_name(variable_table, label))
+        variables.append(get_variable_name(variable_table, label,return_index))
     
     # return list of variable names 
     return variables 
@@ -114,7 +114,7 @@ def get_ACS_url(year,table,geo):
 # Public API Functions
 # ===================================
 
-def get_demo_data(table,year,geo,labels):
+def get_demo_data(table,year,geo,labels,return_index=0):
     
     # get url for API call 
     url = get_ACS_url(year,table,geo)
@@ -123,7 +123,7 @@ def get_demo_data(table,year,geo,labels):
     all_data = get_api_dataframe(url)
 
     # get variable names based on labels  
-    variables = get_variables(table,year,labels)
+    variables = get_variables(table,year,labels,return_index)
 
     # append ucgid code 
     variables.insert(0,'ucgid')
