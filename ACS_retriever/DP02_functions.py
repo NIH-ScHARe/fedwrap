@@ -388,5 +388,113 @@ def get_educational_attainment(year,geo,as_percent=False):
     
     return get_demo_data('DP02',year,geo,labels)
 
-# female_marital_data = get_female_marital_status('2020', 'state',as_percent=True)
-school_enrollment_data = get_school_enrollment('2009', 'state')
+def get_veteran_status(year,geo,as_percent=False):
+    
+    # set labels 
+    if as_percent:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!VETERAN STATUS!!Civilian population 18 years and over!!Civilian veterans']
+        elif year in ['2010','2011','2012','2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!VETERAN STATUS!!Civilian population 18 years and over!!Civilian veterans']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!VETERAN STATUS!!Civilian population 18 years and over!!Civilian veterans']
+        else:
+            print(f"Error: Unsupported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!VETERAN STATUS!!Civilian population 18 years and over!!Civilian veterans']
+        elif year in ['2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!VETERAN STATUS!!Civilian population 18 years and over!!Civilian veterans']
+        else:
+            print(f"Error: Unsupported year '{year}'")
+            return None
+    
+    
+    return get_demo_data('DP02',year,geo,labels)
+
+def get_place_of_birth(year,geo,as_percent=False):
+    
+    # set labels 
+    if as_percent:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!PLACE OF BIRTH!!Total population!!Native!!Born in United States!!State of residence',
+                      'Percent!!Estimate!!PLACE OF BIRTH!!Total population!!Native!!Born in United States!!Different state',
+                      'Percent!!Estimate!!PLACE OF BIRTH!!Total population!!Native!!Born in Puerto Rico, U.S. Island areas, or born abroad to American parent(s)',
+                      'Percent!!Estimate!!PLACE OF BIRTH!!Total population!!Foreign born']
+        elif year in ['2010','2011','2012']:
+            labels = ['Percent!!PLACE OF BIRTH!!Native!!Born in United States!!State of residence',
+                      'Percent!!PLACE OF BIRTH!!Native!!Born in United States!!Different state',
+                      'Percent!!PLACE OF BIRTH!!Native!!Born in Puerto Rico, U.S. Island areas, or born abroad to American parent(s)',
+                      'Percent!!PLACE OF BIRTH!!Foreign born']
+        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!PLACE OF BIRTH!!Total population!!Native!!Born in United States!!State of residence',
+                      'Percent!!PLACE OF BIRTH!!Total population!!Native!!Born in United States!!Different state',
+                      'Percent!!PLACE OF BIRTH!!Total population!!Native!!Born in Puerto Rico, U.S. Island areas, or born abroad to American parent(s)',
+                      'Percent!!PLACE OF BIRTH!!Total population!!Foreign born']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!PLACE OF BIRTH!!Total population!!Native!!Born in United States!!State of residence',
+                      'Percent Estimate!!PLACE OF BIRTH!!Total population!!Native!!Born in United States!!Different state',
+                      'Percent Estimate!!PLACE OF BIRTH!!Total population!!Native!!Born in Puerto Rico, U.S. Island areas, or born abroad to American parent(s)',
+                      'Percent Estimate!!PLACE OF BIRTH!!Total population!!Foreign born']
+        else:
+            print(f"Error: Unsupported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!PLACE OF BIRTH!!Total population!!Native!!Born in United States!!State of residence',
+                      'Number!!Estimate!!PLACE OF BIRTH!!Total population!!Native!!Born in United States!!Different state',
+                      'Number!!Estimate!!PLACE OF BIRTH!!Total population!!Native!!Born in Puerto Rico, U.S. Island areas, or born abroad to American parent(s)',
+                      'Number!!Estimate!!PLACE OF BIRTH!!Total population!!Foreign born']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!PLACE OF BIRTH!!Native!!Born in United States!!State of residence',
+                      'Estimate!!PLACE OF BIRTH!!Native!!Born in United States!!Different state',
+                      'Estimate!!PLACE OF BIRTH!!Native!!Born in Puerto Rico, U.S. Island areas, or born abroad to American parent(s)',
+                      'Estimate!!PLACE OF BIRTH!!Foreign born']
+        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!PLACE OF BIRTH!!Total population!!Native!!Born in United States!!State of residence',
+                      'Estimate!!PLACE OF BIRTH!!Total population!!Native!!Born in United States!!Different state',
+                      'Estimate!!PLACE OF BIRTH!!Total population!!Native!!Born in Puerto Rico, U.S. Island areas, or born abroad to American parent(s)',
+                      'Estimate!!PLACE OF BIRTH!!Total population!!Foreign born']
+        else:
+            print(f"Error: Unsupported year '{year}'")
+            return None
+    
+    
+    return get_demo_data('DP02',year,geo,labels)
+
+def get_US_citizenship_status(year,geo,as_percent=False):
+    
+    # set labels 
+    if as_percent:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!U.S. CITIZENSHIP STATUS!!Foreign-born population!!Naturalized U.S. citizen',
+                      'Percent!!Estimate!!U.S. CITIZENSHIP STATUS!!Foreign-born population!!Not a U.S. citizen']
+        elif year in ['2010','2011','2012']:
+            labels = ['Percent!!U.S. CITIZENSHIP STATUS!!Naturalized U.S. citizen',
+                      'Percent!!U.S. CITIZENSHIP STATUS!!Not a U.S. citizen']
+        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!U.S. CITIZENSHIP STATUS!!Foreign-born population!!Naturalized U.S. citizen',
+                      'Percent!!U.S. CITIZENSHIP STATUS!!Foreign-born population!!Not a U.S. citizen']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!U.S. CITIZENSHIP STATUS!!Foreign-born population!!Naturalized U.S. citizen',
+                      'Percent Estimate!!U.S. CITIZENSHIP STATUS!!Foreign-born population!!Not a U.S. citizen']
+        else:
+            print(f"Error: Unsupported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!U.S. CITIZENSHIP STATUS!!Foreign-born population!!Naturalized U.S. citizen',
+                      'Number!!Estimate!!U.S. CITIZENSHIP STATUS!!Foreign-born population!!Not a U.S. citizen']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!U.S. CITIZENSHIP STATUS!!Naturalized U.S. citizen',
+                      'Estimate!!U.S. CITIZENSHIP STATUS!!Not a U.S. citizen']
+        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!U.S. CITIZENSHIP STATUS!!Foreign-born population!!Naturalized U.S. citizen',
+                      'Estimate!!U.S. CITIZENSHIP STATUS!!Foreign-born population!!Not a U.S. citizen']
+        else:
+            print(f"Error: Unsupported year '{year}'")
+            return None
+    
+    
+    return get_demo_data('DP02',year,geo,labels)
