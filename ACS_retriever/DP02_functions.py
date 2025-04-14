@@ -1,4 +1,4 @@
-from census_API_wrapper import get_demo_data
+from .census_API_wrapper import get_demo_data
 
 def get_household_type(year,geo,as_percent=False):
     
