@@ -260,5 +260,133 @@ def get_female_marital_status(year,geo,as_percent=False,return_index=0):
     
     return get_demo_data('DP02',year,geo,labels,return_index)
 
+def get_school_enrollment(year,geo,as_percent=False):
+    
+    # set labels 
+    if as_percent:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!Nursery school, preschool',
+                      'Percent!!Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!Kindergarten',
+                      'Percent!!Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!Elementary school (grades 1-8)',
+                      'Percent!!Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!High school (grades 9-12)',
+                      'Percent!!Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!College or graduate school']
+        elif year in ['2010','2011','2012']:
+            labels = ['Percent!!SCHOOL ENROLLMENT!!Nursery school, preschool',
+                      'Percent!!SCHOOL ENROLLMENT!!Kindergarten',
+                      'Percent!!SCHOOL ENROLLMENT!!Elementary school (grades 1-8)',
+                      'Percent!!SCHOOL ENROLLMENT!!High school (grades 9-12)',
+                      'Percent!!SCHOOL ENROLLMENT!!College or graduate school']
+        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!Nursery school, preschool',
+                      'Percent!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!Kindergarten',
+                      'Percent!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!Elementary school (grades 1-8)',
+                      'Percent!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!High school (grades 9-12)',
+                      'Percent!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!College or graduate school']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!Nursery school, preschool',
+                      'Percent Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!Kindergarten',
+                      'Percent Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!Elementary school (grades 1-8)',
+                      'Percent Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!High school (grades 9-12)',
+                      'Percent Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!College or graduate school']
+        else:
+            print(f"Error: Unsupported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!Nursery school, preschool',
+                      'Number!!Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!Kindergarten',
+                      'Number!!Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!Elementary school (grades 1-8)',
+                      'Number!!Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!High school (grades 9-12)',
+                      'Number!!Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!College or graduate school']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!SCHOOL ENROLLMENT!!Nursery school, preschool',
+                      'Estimate!!SCHOOL ENROLLMENT!!Kindergarten',
+                      'Estimate!!SCHOOL ENROLLMENT!!Elementary school (grades 1-8)',
+                      'Estimate!!SCHOOL ENROLLMENT!!High school (grades 9-12)',
+                      'Estimate!!SCHOOL ENROLLMENT!!College or graduate school']
+        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!Nursery school, preschool',
+                      'Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!Kindergarten',
+                      'Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!Elementary school (grades 1-8)',
+                      'Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!High school (grades 9-12)',
+                      'Estimate!!SCHOOL ENROLLMENT!!Population 3 years and over enrolled in school!!College or graduate school']
+        else:
+            print(f"Error: Unsupported year '{year}'")
+            return None
+    
+    
+    return get_demo_data('DP02',year,geo,labels)
 
-female_marital_data = get_female_marital_status('2020', 'state',as_percent=True)
+def get_educational_attainment(year,geo,as_percent=False):
+    
+    # set labels 
+    if as_percent:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Less than 9th grade',
+                      'Percent!!Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!9th to 12th grade, no diploma',
+                      'Percent!!Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!High school graduate (includes equivalency)',
+                      'Percent!!Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Some college, no degree',
+                      'Percent!!Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Associate\'s degree',
+                      'Percent!!Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Bachelor\'s degree',
+                      'Percent!!Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Graduate or professional degree']
+        elif year in ['2010','2011','2012']:
+            labels = ['Percent!!EDUCATIONAL ATTAINMENT!!Less than 9th grade',
+                      'Percent!!EDUCATIONAL ATTAINMENT!!9th to 12th grade, no diploma',
+                      'Percent!!EDUCATIONAL ATTAINMENT!!High school graduate (includes equivalency)',
+                      'Percent!!EDUCATIONAL ATTAINMENT!!Some college, no degree',
+                      'Percent!!EDUCATIONAL ATTAINMENT!!Associate\'s degree',
+                      'Percent!!EDUCATIONAL ATTAINMENT!!Bachelor\'s degree',
+                      'Percent!!EDUCATIONAL ATTAINMENT!!Graduate or professional degree']
+        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Less than 9th grade',
+                      'Percent!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!9th to 12th grade, no diploma',
+                      'Percent!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!High school graduate (includes equivalency)',
+                      'Percent!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Some college, no degree',
+                      'Percent!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Associate\'s degree',
+                      'Percent!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Bachelor\'s degree',
+                      'Percent!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Graduate or professional degree']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Less than 9th grade',
+                      'Percent Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!9th to 12th grade, no diploma',
+                      'Percent Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!High school graduate (includes equivalency)',
+                      'Percent Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Some college, no degree',
+                      'Percent Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Associate\'s degree',
+                      'Percent Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Bachelor\'s degree',
+                      'Percent Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Graduate or professional degree']
+        else:
+            print(f"Error: Unsupported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Less than 9th grade',
+                      'Number!!Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!9th to 12th grade, no diploma',
+                      'Number!!Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!High school graduate (includes equivalency)',
+                      'Number!!Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Some college, no degree',
+                      'Number!!Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Associate\'s degree',
+                      'Number!!Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Bachelor\'s degree',
+                      'Number!!Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Graduate or professional degree']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!EDUCATIONAL ATTAINMENT!!Less than 9th grade',
+                      'Estimate!!EDUCATIONAL ATTAINMENT!!9th to 12th grade, no diploma',
+                      'Estimate!!EDUCATIONAL ATTAINMENT!!High school graduate (includes equivalency)',
+                      'Estimate!!EDUCATIONAL ATTAINMENT!!Some college, no degree',
+                      'Estimate!!EDUCATIONAL ATTAINMENT!!Associate\'s degree',
+                      'Estimate!!EDUCATIONAL ATTAINMENT!!Bachelor\'s degree',
+                      'Estimate!!EDUCATIONAL ATTAINMENT!!Graduate or professional degree']
+        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Less than 9th grade',
+                      'Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!9th to 12th grade, no diploma',
+                      'Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!High school graduate (includes equivalency)',
+                      'Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Some college, no degree',
+                      'Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Associate\'s degree',
+                      'Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Bachelor\'s degree',
+                      'Estimate!!EDUCATIONAL ATTAINMENT!!Population 25 years and over!!Graduate or professional degree']
+        else:
+            print(f"Error: Unsupported year '{year}'")
+            return None
+    
+    
+    return get_demo_data('DP02',year,geo,labels)
+
+# female_marital_data = get_female_marital_status('2020', 'state',as_percent=True)
+school_enrollment_data = get_school_enrollment('2009', 'state')
