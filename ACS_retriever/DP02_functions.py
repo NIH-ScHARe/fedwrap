@@ -688,4 +688,236 @@ def get_language_spoken_at_home(year,geo,as_percent=False):
             return None
     
     return get_demo_data('DP02',year,geo,labels)
-        
+
+def get_ancestry(year,geo,as_percent=False):
+    
+    # set labels 
+    if not as_percent:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!ANCESTRY!!Total population!!American',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Arab',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Czech',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Danish',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Dutch',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!English',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!French (except Basque)',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!French Canadian',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!German',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Greek',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Hungarian',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Irish',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Italian',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Lithuanian',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Norwegian',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Polish',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Portuguese',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Russian',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Scotch-Irish',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Scottish',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Slovak',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Subsaharan African',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Swedish',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Swiss',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Ukrainian',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!Welsh',
+                      'Number!!Estimate!!ANCESTRY!!Total population!!West Indian (excluding Hispanic origin groups)']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!ANCESTRY!!American',
+                      'Estimate!!ANCESTRY!!Arab',
+                      'Estimate!!ANCESTRY!!Czech',
+                      'Estimate!!ANCESTRY!!Danish',
+                      'Estimate!!ANCESTRY!!Dutch',
+                      'Estimate!!ANCESTRY!!English',
+                      'Estimate!!ANCESTRY!!French (except Basque)',
+                      'Estimate!!ANCESTRY!!French Canadian',
+                      'Estimate!!ANCESTRY!!German',
+                      'Estimate!!ANCESTRY!!Greek',
+                      'Estimate!!ANCESTRY!!Hungarian',
+                      'Estimate!!ANCESTRY!!Irish',
+                      'Estimate!!ANCESTRY!!Italian',
+                      'Estimate!!ANCESTRY!!Lithuanian',
+                      'Estimate!!ANCESTRY!!Norwegian',
+                      'Estimate!!ANCESTRY!!Polish',
+                      'Estimate!!ANCESTRY!!Portuguese',
+                      'Estimate!!ANCESTRY!!Russian',
+                      'Estimate!!ANCESTRY!!Scotch-Irish',
+                      'Estimate!!ANCESTRY!!Scottish',
+                      'Estimate!!ANCESTRY!!Slovak',
+                      'Estimate!!ANCESTRY!!Subsaharan African',
+                      'Estimate!!ANCESTRY!!Swedish',
+                      'Estimate!!ANCESTRY!!Swiss',
+                      'Estimate!!ANCESTRY!!Ukrainian',
+                      'Estimate!!ANCESTRY!!Welsh',
+                      'Estimate!!ANCESTRY!!West Indian (excluding Hispanic origin groups)']
+        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!ANCESTRY!!Total population!!American',
+                      'Estimate!!ANCESTRY!!Total population!!Arab',
+                      'Estimate!!ANCESTRY!!Total population!!Czech',
+                      'Estimate!!ANCESTRY!!Total population!!Danish',
+                      'Estimate!!ANCESTRY!!Total population!!Dutch',
+                      'Estimate!!ANCESTRY!!Total population!!English',
+                      'Estimate!!ANCESTRY!!Total population!!French (except Basque)',
+                      'Estimate!!ANCESTRY!!Total population!!French Canadian',
+                      'Estimate!!ANCESTRY!!Total population!!German',
+                      'Estimate!!ANCESTRY!!Total population!!Greek',
+                      'Estimate!!ANCESTRY!!Total population!!Hungarian',
+                      'Estimate!!ANCESTRY!!Total population!!Irish',
+                      'Estimate!!ANCESTRY!!Total population!!Italian',
+                      'Estimate!!ANCESTRY!!Total population!!Lithuanian',
+                      'Estimate!!ANCESTRY!!Total population!!Norwegian',
+                      'Estimate!!ANCESTRY!!Total population!!Polish',
+                      'Estimate!!ANCESTRY!!Total population!!Portuguese',
+                      'Estimate!!ANCESTRY!!Total population!!Russian',
+                      'Estimate!!ANCESTRY!!Total population!!Scotch-Irish',
+                      'Estimate!!ANCESTRY!!Total population!!Scottish',
+                      'Estimate!!ANCESTRY!!Total population!!Slovak',
+                      'Estimate!!ANCESTRY!!Total population!!Subsaharan African',
+                      'Estimate!!ANCESTRY!!Total population!!Swedish',
+                      'Estimate!!ANCESTRY!!Total population!!Swiss',
+                      'Estimate!!ANCESTRY!!Total population!!Ukrainian',
+                      'Estimate!!ANCESTRY!!Total population!!Welsh',
+                      'Estimate!!ANCESTRY!!Total population!!West Indian (excluding Hispanic origin groups)']
+        else:
+            print(f"Error: Unsupported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!ANCESTRY!!Total population!!American',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Arab',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Czech',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Danish',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Dutch',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!English',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!French (except Basque)',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!French Canadian',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!German',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Greek',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Hungarian',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Irish',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Italian',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Lithuanian',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Norwegian',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Polish',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Portuguese',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Russian',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Scotch-Irish',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Scottish',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Slovak',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Subsaharan African',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Swedish',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Swiss',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Ukrainian',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!Welsh',
+                      'Percent!!Estimate!!ANCESTRY!!Total population!!West Indian (excluding Hispanic origin groups)']
+        elif year in ['2010','2011','2012']:
+            labels = ['Percent!!ANCESTRY!!American',
+                      'Percent!!ANCESTRY!!Arab',
+                      'Percent!!ANCESTRY!!Czech',
+                      'Percent!!ANCESTRY!!Danish',
+                      'Percent!!ANCESTRY!!Dutch',
+                      'Percent!!ANCESTRY!!English',
+                      'Percent!!ANCESTRY!!French (except Basque)',
+                      'Percent!!ANCESTRY!!French Canadian',
+                      'Percent!!ANCESTRY!!German',
+                      'Percent!!ANCESTRY!!Greek',
+                      'Percent!!ANCESTRY!!Hungarian',
+                      'Percent!!ANCESTRY!!Irish',
+                      'Percent!!ANCESTRY!!Italian',
+                      'Percent!!ANCESTRY!!Lithuanian',
+                      'Percent!!ANCESTRY!!Norwegian',
+                      'Percent!!ANCESTRY!!Polish',
+                      'Percent!!ANCESTRY!!Portuguese',
+                      'Percent!!ANCESTRY!!Russian',
+                      'Percent!!ANCESTRY!!Scotch-Irish',
+                      'Percent!!ANCESTRY!!Scottish',
+                      'Percent!!ANCESTRY!!Slovak',
+                      'Percent!!ANCESTRY!!Subsaharan African',
+                      'Percent!!ANCESTRY!!Swedish',
+                      'Percent!!ANCESTRY!!Swiss',
+                      'Percent!!ANCESTRY!!Ukrainian',
+                      'Percent!!ANCESTRY!!Welsh',
+                      'Percent!!ANCESTRY!!West Indian (excluding Hispanic origin groups)']
+        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!ANCESTRY!!Total population!!American',
+                      'Percent!!ANCESTRY!!Total population!!Arab',
+                      'Percent!!ANCESTRY!!Total population!!Czech',
+                      'Percent!!ANCESTRY!!Total population!!Danish',
+                      'Percent!!ANCESTRY!!Total population!!Dutch',
+                      'Percent!!ANCESTRY!!Total population!!English',
+                      'Percent!!ANCESTRY!!Total population!!French (except Basque)',
+                      'Percent!!ANCESTRY!!Total population!!French Canadian',
+                      'Percent!!ANCESTRY!!Total population!!German',
+                      'Percent!!ANCESTRY!!Total population!!Greek',
+                      'Percent!!ANCESTRY!!Total population!!Hungarian',
+                      'Percent!!ANCESTRY!!Total population!!Irish',
+                      'Percent!!ANCESTRY!!Total population!!Italian',
+                      'Percent!!ANCESTRY!!Total population!!Lithuanian',
+                      'Percent!!ANCESTRY!!Total population!!Norwegian',
+                      'Percent!!ANCESTRY!!Total population!!Polish',
+                      'Percent!!ANCESTRY!!Total population!!Portuguese',
+                      'Percent!!ANCESTRY!!Total population!!Russian',
+                      'Percent!!ANCESTRY!!Total population!!Scotch-Irish',
+                      'Percent!!ANCESTRY!!Total population!!Scottish',
+                      'Percent!!ANCESTRY!!Total population!!Slovak',
+                      'Percent!!ANCESTRY!!Total population!!Subsaharan African',
+                      'Percent!!ANCESTRY!!Total population!!Swedish',
+                      'Percent!!ANCESTRY!!Total population!!Swiss',
+                      'Percent!!ANCESTRY!!Total population!!Ukrainian',
+                      'Percent!!ANCESTRY!!Total population!!Welsh',
+                      'Percent!!ANCESTRY!!Total population!!West Indian (excluding Hispanic origin groups)']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!ANCESTRY!!Total population!!American',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Arab',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Czech',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Danish',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Dutch',
+                      'Percent Estimate!!ANCESTRY!!Total population!!English',
+                      'Percent Estimate!!ANCESTRY!!Total population!!French (except Basque)',
+                      'Percent Estimate!!ANCESTRY!!Total population!!French Canadian',
+                      'Percent Estimate!!ANCESTRY!!Total population!!German',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Greek',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Hungarian',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Irish',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Italian',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Lithuanian',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Norwegian',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Polish',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Portuguese',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Russian',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Scotch-Irish',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Scottish',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Slovak',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Subsaharan African',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Swedish',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Swiss',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Ukrainian',
+                      'Percent Estimate!!ANCESTRY!!Total population!!Welsh',
+                      'Percent Estimate!!ANCESTRY!!Total population!!West Indian (excluding Hispanic origin groups)']
+        else:
+            print(f"Error: Unsupported year '{year}'")
+            return None
+    
+    return get_demo_data('DP02',year,geo,labels)
+
+def get_computer_and_internet_use(year,geo,as_percent=False):
+    
+    # set labels 
+    if not as_percent:
+        if year in ['2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!COMPUTERS AND INTERNET USE!!Total households!!With a computer',
+                      'Estimate!!COMPUTERS AND INTERNET USE!!Total households!!With a broadband Internet subscription']
+        else:
+            print(f"Error: Unsupported year '{year}'")
+            return None
+    else:
+        if year in ['2017','2018']:
+            labels = ['Percent Estimate!!COMPUTERS AND INTERNET USE!!Total households!!With a computer',
+                      'Percent Estimate!!COMPUTERS AND INTERNET USE!!Total households!!With a broadband Internet subscription']
+        elif year in ['2019','2020','2021','2022','2023']:
+            labels = ['Percent!!COMPUTERS AND INTERNET USE!!Total households!!With a computer',
+                      'Percent!!COMPUTERS AND INTERNET USE!!Total households!!With a broadband Internet subscription']
+        else:
+            print(f"Error: Unsupported year '{year}'")
+            return None
+    
+    return get_demo_data('DP02',year,geo,labels)
