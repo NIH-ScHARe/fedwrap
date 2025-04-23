@@ -4,7 +4,8 @@ import importlib
 import inspect
 
 # List the module names (without the .py extension)
-modules = ['DP02_functions', 'DP03_functions', 'DP05_functions']
+modules = ['DP02_functions', 'DP03_functions', 
+           'DP04_functions', 'DP05_functions']
 
 __all__ = []
 
