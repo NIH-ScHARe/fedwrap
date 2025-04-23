@@ -602,8 +602,264 @@ def get_year_householder_moved_into_unit(year,geo,as_percent=False):
     
     return get_demo_data('DP04',year,geo,labels) 
 
+def get_vehicles_available(year,geo,as_percent=False):
+    
+    # set labels 
+    if not as_percent:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!No vehicles available',
+                      'Number!!Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!1 vehicle available',
+                      'Number!!Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!2 vehicles available',
+                      'Number!!Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!3 or more vehicles available']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!VEHICLES AVAILABLE!!No vehicles available',
+                      'Estimate!!VEHICLES AVAILABLE!!1 vehicle available',
+                      'Estimate!!VEHICLES AVAILABLE!!2 vehicles available',
+                      'Estimate!!VEHICLES AVAILABLE!!3 or more vehicles available']
+        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!No vehicles available',
+                      'Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!1 vehicle available',
+                      'Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!2 vehicles available',
+                      'Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!3 or more vehicles available']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!No vehicles available',
+                      'Percent!!Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!1 vehicle available',
+                      'Percent!!Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!2 vehicles available',
+                      'Percent!!Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!3 or more vehicles available']
+        elif year in ['2010','2011','2012']: 
+            labels = ['Percent!!VEHICLES AVAILABLE!!No vehicles available',
+                      'Percent!!VEHICLES AVAILABLE!!1 vehicle available',
+                      'Percent!!VEHICLES AVAILABLE!!2 vehicles available',
+                      'Percent!!VEHICLES AVAILABLE!!3 or more vehicles available']
+        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!VEHICLES AVAILABLE!!Occupied housing units!!No vehicles available',
+                      'Percent!!VEHICLES AVAILABLE!!Occupied housing units!!1 vehicle available',
+                      'Percent!!VEHICLES AVAILABLE!!Occupied housing units!!2 vehicles available',
+                      'Percent!!VEHICLES AVAILABLE!!Occupied housing units!!3 or more vehicles available']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!No vehicles available',
+                      'Percent Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!1 vehicle available',
+                      'Percent Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!2 vehicles available',
+                      'Percent Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!3 or more vehicles available']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    
+    return get_demo_data('DP04',year,geo,labels) 
 
+def get_house_heating_fuel(year,geo,as_percent=False):
+    
+    # set labels 
+    if not as_percent:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Utility gas',
+                      'Number!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Bottled, tank, or LP gas',
+                      'Number!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Electricity',
+                      'Number!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Fuel oil, kerosene, etc.',
+                      'Number!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Coal or coke',
+                      'Number!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Wood',
+                      'Number!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Solar energy',
+                      'Number!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Other fuel',
+                      'Number!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!No fuel used']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!HOUSE HEATING FUEL!!Utility gas',
+                      'Estimate!!HOUSE HEATING FUEL!!Bottled, tank, or LP gas',
+                      'Estimate!!HOUSE HEATING FUEL!!Electricity',
+                      'Estimate!!HOUSE HEATING FUEL!!Fuel oil, kerosene, etc.',
+                      'Estimate!!HOUSE HEATING FUEL!!Coal or coke',
+                      'Estimate!!HOUSE HEATING FUEL!!Wood',
+                      'Estimate!!HOUSE HEATING FUEL!!Solar energy',
+                      'Estimate!!HOUSE HEATING FUEL!!Other fuel',
+                      'Estimate!!HOUSE HEATING FUEL!!No fuel used']
+        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Utility gas',
+                      'Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Bottled, tank, or LP gas',
+                      'Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Electricity',
+                      'Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Fuel oil, kerosene, etc.',
+                      'Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Coal or coke',
+                      'Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Wood',
+                      'Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Solar energy',
+                      'Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Other fuel',
+                      'Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!No fuel used']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Utility gas',
+                      'Percent!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Bottled, tank, or LP gas',
+                      'Percent!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Electricity',
+                      'Percent!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Fuel oil, kerosene, etc.',
+                      'Percent!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Coal or coke',
+                      'Percent!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Wood',
+                      'Percent!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Solar energy',
+                      'Percent!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Other fuel',
+                      'Percent!!Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!No fuel used']
+        elif year in ['2010','2011','2012']: 
+            labels = ['Percent!!HOUSE HEATING FUEL!!Utility gas',
+                      'Percent!!HOUSE HEATING FUEL!!Bottled, tank, or LP gas',
+                      'Percent!!HOUSE HEATING FUEL!!Electricity',
+                      'Percent!!HOUSE HEATING FUEL!!Fuel oil, kerosene, etc.',
+                      'Percent!!HOUSE HEATING FUEL!!Coal or coke',
+                      'Percent!!HOUSE HEATING FUEL!!Wood',
+                      'Percent!!HOUSE HEATING FUEL!!Solar energy',
+                      'Percent!!HOUSE HEATING FUEL!!Other fuel',
+                      'Percent!!HOUSE HEATING FUEL!!No fuel used']
+        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!HOUSE HEATING FUEL!!Occupied housing units!!Utility gas',
+                      'Percent!!HOUSE HEATING FUEL!!Occupied housing units!!Bottled, tank, or LP gas',
+                      'Percent!!HOUSE HEATING FUEL!!Occupied housing units!!Electricity',
+                      'Percent!!HOUSE HEATING FUEL!!Occupied housing units!!Fuel oil, kerosene, etc.',
+                      'Percent!!HOUSE HEATING FUEL!!Occupied housing units!!Coal or coke',
+                      'Percent!!HOUSE HEATING FUEL!!Occupied housing units!!Wood',
+                      'Percent!!HOUSE HEATING FUEL!!Occupied housing units!!Solar energy',
+                      'Percent!!HOUSE HEATING FUEL!!Occupied housing units!!Other fuel',
+                      'Percent!!HOUSE HEATING FUEL!!Occupied housing units!!No fuel used']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Utility gas',
+                      'Percent Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Bottled, tank, or LP gas',
+                      'Percent Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Electricity',
+                      'Percent Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Fuel oil, kerosene, etc.',
+                      'Percent Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Coal or coke',
+                      'Percent Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Wood',
+                      'Percent Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Solar energy',
+                      'Percent Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!Other fuel',
+                      'Percent Estimate!!HOUSE HEATING FUEL!!Occupied housing units!!No fuel used']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    
+    return get_demo_data('DP04',year,geo,labels) 
 
+def get_housing_lacking_complete_plumbing_facilities(year,geo,as_percent=False):
+    
+    # set labels 
+    if not as_percent:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!SELECTED CHARACTERISTICS!!Occupied housing units!!Lacking complete plumbing facilities']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!SELECTED CHARACTERISTICS!!Lacking complete plumbing facilities']
+        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!SELECTED CHARACTERISTICS!!Occupied housing units!!Lacking complete plumbing facilities']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!SELECTED CHARACTERISTICS!!Occupied housing units!!Lacking complete plumbing facilities']
+        elif year in ['2010','2011','2012']: 
+            labels = ['Percent!!SELECTED CHARACTERISTICS!!Lacking complete plumbing facilities']
+        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!SELECTED CHARACTERISTICS!!Occupied housing units!!Lacking complete plumbing facilities']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!SELECTED CHARACTERISTICS!!Occupied housing units!!Lacking complete plumbing facilities']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    
+    return get_demo_data('DP04',year,geo,labels) 
+
+def get_housing_lacking_complete_kitchen_facilities(year,geo,as_percent=False):
+    
+    # set labels 
+    if not as_percent:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!SELECTED CHARACTERISTICS!!Occupied housing units!!Lacking complete kitchen facilities']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!SELECTED CHARACTERISTICS!!Lacking complete kitchen facilities']
+        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!SELECTED CHARACTERISTICS!!Occupied housing units!!Lacking complete kitchen facilities']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!SELECTED CHARACTERISTICS!!Occupied housing units!!Lacking complete kitchen facilities']
+        elif year in ['2010','2011','2012']: 
+            labels = ['Percent!!SELECTED CHARACTERISTICS!!Lacking complete kitchen facilities']
+        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!SELECTED CHARACTERISTICS!!Occupied housing units!!Lacking complete kitchen facilities']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!SELECTED CHARACTERISTICS!!Occupied housing units!!Lacking complete kitchen facilities']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    
+    return get_demo_data('DP04',year,geo,labels) 
+
+def get_housing_no_telephone_service_available(year,geo,as_percent=False):
+    
+    # set labels 
+    if not as_percent:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!SELECTED CHARACTERISTICS!!Occupied housing units!!No telephone service available']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!SELECTED CHARACTERISTICS!!No telephone service available']
+        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!SELECTED CHARACTERISTICS!!Occupied housing units!!No telephone service available']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!SELECTED CHARACTERISTICS!!Occupied housing units!!No telephone service available']
+        elif year in ['2010','2011','2012']: 
+            labels = ['Percent!!SELECTED CHARACTERISTICS!!No telephone service available']
+        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!SELECTED CHARACTERISTICS!!Occupied housing units!!No telephone service available']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!SELECTED CHARACTERISTICS!!Occupied housing units!!No telephone service available']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    
+    return get_demo_data('DP04',year,geo,labels) 
+
+def get_occupants_per_room(year,geo,as_percent=False):
+    
+    # set labels 
+    if not as_percent:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!OCCUPANTS PER ROOM!!Occupied housing units!!1.00 or less',
+                      'Number!!Estimate!!OCCUPANTS PER ROOM!!Occupied housing units!!1.01 to 1.50',
+                      'Number!!Estimate!!OCCUPANTS PER ROOM!!Occupied housing units!!1.51 or more']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!OCCUPANTS PER ROOM!!1.00 or less',
+                      'Estimate!!OCCUPANTS PER ROOM!!1.01 to 1.50',
+                      'Estimate!!OCCUPANTS PER ROOM!!1.51 or more']
+        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!OCCUPANTS PER ROOM!!Occupied housing units!!1.00 or less',
+                      'Estimate!!OCCUPANTS PER ROOM!!Occupied housing units!!1.01 to 1.50',
+                      'Estimate!!OCCUPANTS PER ROOM!!Occupied housing units!!1.51 or more']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!OCCUPANTS PER ROOM!!Occupied housing units!!1.00 or less',
+                      'Percent!!Estimate!!OCCUPANTS PER ROOM!!Occupied housing units!!1.01 to 1.50',
+                      'Percent!!Estimate!!OCCUPANTS PER ROOM!!Occupied housing units!!1.51 or more']
+        elif year in ['2010','2011','2012']: 
+            labels = ['Percent!!OCCUPANTS PER ROOM!!1.00 or less',
+                      'Percent!!OCCUPANTS PER ROOM!!1.01 to 1.50',
+                      'Percent!!OCCUPANTS PER ROOM!!1.51 or more']
+        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!OCCUPANTS PER ROOM!!Occupied housing units!!1.00 or less',
+                      'Percent!!OCCUPANTS PER ROOM!!Occupied housing units!!1.01 to 1.50',
+                      'Percent!!OCCUPANTS PER ROOM!!Occupied housing units!!1.51 or more']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!OCCUPANTS PER ROOM!!Occupied housing units!!1.00 or less',
+                      'Percent Estimate!!OCCUPANTS PER ROOM!!Occupied housing units!!1.01 to 1.50',
+                      'Percent Estimate!!OCCUPANTS PER ROOM!!Occupied housing units!!1.51 or more']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    
+    return get_demo_data('DP04',year,geo,labels) 
 
 def get_data(year,geo,as_percent=False):
     
