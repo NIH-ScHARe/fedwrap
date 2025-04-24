@@ -21,8 +21,15 @@ def get_variable_name(table,label,return_index=0):
     """
     
     match = table.loc[table['Label'] == label, 'Name']
-    return match.iloc[return_index] if not match.empty else None
+    
+    # return none if no match 
+    if match.empty:
+        return None
 
+    # if length is longer than 1, return with return index, otherwise return 0
+    return match.iloc[return_index if len(match) > 1 else 0]
+    
+    
 def extract_label_name(labels):
     
     """

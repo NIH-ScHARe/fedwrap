@@ -861,30 +861,551 @@ def get_occupants_per_room(year,geo,as_percent=False):
     
     return get_demo_data('DP04',year,geo,labels) 
 
-def get_data(year,geo,as_percent=False):
+def get_housing_value(year,geo,as_percent=False):
     
     # set labels 
     if not as_percent:
         if year in ['2009']:
-            labels = []
+            labels = ['Number!!Estimate!!VALUE!!Owner-occupied units!!Less than $50,000',
+                      'Number!!Estimate!!VALUE!!Owner-occupied units!!$50,000 to $99,999',
+                      'Number!!Estimate!!VALUE!!Owner-occupied units!!$100,000 to $149,999',
+                      'Number!!Estimate!!VALUE!!Owner-occupied units!!$150,000 to $199,999',
+                      'Number!!Estimate!!VALUE!!Owner-occupied units!!$200,000 to $299,999',
+                      'Number!!Estimate!!VALUE!!Owner-occupied units!!$300,000 to $499,999',
+                      'Number!!Estimate!!VALUE!!Owner-occupied units!!$500,000 to $999,999',
+                      'Number!!Estimate!!VALUE!!Owner-occupied units!!$1,000,000 or more']
         elif year in ['2010','2011','2012']:
-            labels = []
+            labels = ['Estimate!!VALUE!!Less than $50,000',
+                      'Estimate!!VALUE!!$50,000 to $99,999',
+                      'Estimate!!VALUE!!$100,000 to $149,999',
+                      'Estimate!!VALUE!!$150,000 to $199,999',
+                      'Estimate!!VALUE!!$200,000 to $299,999',
+                      'Estimate!!VALUE!!$300,000 to $499,999',
+                      'Estimate!!VALUE!!$500,000 to $999,999',
+                      'Estimate!!VALUE!!$1,000,000 or more']
         elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
-            labels = []
+            labels = ['Estimate!!VALUE!!Owner-occupied units!!Less than $50,000',
+                      'Estimate!!VALUE!!Owner-occupied units!!$50,000 to $99,999',
+                      'Estimate!!VALUE!!Owner-occupied units!!$100,000 to $149,999',
+                      'Estimate!!VALUE!!Owner-occupied units!!$150,000 to $199,999',
+                      'Estimate!!VALUE!!Owner-occupied units!!$200,000 to $299,999',
+                      'Estimate!!VALUE!!Owner-occupied units!!$300,000 to $499,999',
+                      'Estimate!!VALUE!!Owner-occupied units!!$500,000 to $999,999',
+                      'Estimate!!VALUE!!Owner-occupied units!!$1,000,000 or more']
         else:
             print(f"Error: supported year '{year}'")
             return None
     else:
         if year in ['2009']:
-            labels = []
+            labels = ['Percent!!Estimate!!VALUE!!Owner-occupied units!!Less than $50,000',
+                      'Percent!!Estimate!!VALUE!!Owner-occupied units!!$50,000 to $99,999',
+                      'Percent!!Estimate!!VALUE!!Owner-occupied units!!$100,000 to $149,999',
+                      'Percent!!Estimate!!VALUE!!Owner-occupied units!!$150,000 to $199,999',
+                      'Percent!!Estimate!!VALUE!!Owner-occupied units!!$200,000 to $299,999',
+                      'Percent!!Estimate!!VALUE!!Owner-occupied units!!$300,000 to $499,999',
+                      'Percent!!Estimate!!VALUE!!Owner-occupied units!!$500,000 to $999,999',
+                      'Percent!!Estimate!!VALUE!!Owner-occupied units!!$1,000,000 or more']
         elif year in ['2010','2011','2012']: 
-            labels = []
+            labels = ['Percent!!VALUE!!Less than $50,000',
+                      'Percent!!VALUE!!$50,000 to $99,999',
+                      'Percent!!VALUE!!$100,000 to $149,999',
+                      'Percent!!VALUE!!$150,000 to $199,999',
+                      'Percent!!VALUE!!$200,000 to $299,999',
+                      'Percent!!VALUE!!$300,000 to $499,999',
+                      'Percent!!VALUE!!$500,000 to $999,999',
+                      'Percent!!VALUE!!$1,000,000 or more']
         elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
-            labels = []
+            labels = ['Percent!!VALUE!!Owner-occupied units!!Less than $50,000',
+                      'Percent!!VALUE!!Owner-occupied units!!$50,000 to $99,999',
+                      'Percent!!VALUE!!Owner-occupied units!!$100,000 to $149,999',
+                      'Percent!!VALUE!!Owner-occupied units!!$150,000 to $199,999',
+                      'Percent!!VALUE!!Owner-occupied units!!$200,000 to $299,999',
+                      'Percent!!VALUE!!Owner-occupied units!!$300,000 to $499,999',
+                      'Percent!!VALUE!!Owner-occupied units!!$500,000 to $999,999',
+                      'Percent!!VALUE!!Owner-occupied units!!$1,000,000 or more']
         elif year in ['2017','2018']:
-            labels = []
+            labels = ['Percent Estimate!!VALUE!!Owner-occupied units!!Less than $50,000',
+                      'Percent Estimate!!VALUE!!Owner-occupied units!!$50,000 to $99,999',
+                      'Percent Estimate!!VALUE!!Owner-occupied units!!$100,000 to $149,999',
+                      'Percent Estimate!!VALUE!!Owner-occupied units!!$150,000 to $199,999',
+                      'Percent Estimate!!VALUE!!Owner-occupied units!!$200,000 to $299,999',
+                      'Percent Estimate!!VALUE!!Owner-occupied units!!$300,000 to $499,999',
+                      'Percent Estimate!!VALUE!!Owner-occupied units!!$500,000 to $999,999',
+                      'Percent Estimate!!VALUE!!Owner-occupied units!!$1,000,000 or more']
         else:
             print(f"Error: supported year '{year}'")
             return None
     
     return get_demo_data('DP04',year,geo,labels) 
+
+def get_mortgage_status(year,geo,as_percent=False):
+    
+    # set labels 
+    if not as_percent:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!MORTGAGE STATUS!!Owner-occupied units!!Housing units with a mortgage',
+                      'Number!!Estimate!!MORTGAGE STATUS!!Owner-occupied units!!Housing units without a mortgage']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!MORTGAGE STATUS!!Housing units with a mortgage',
+                      'Estimate!!MORTGAGE STATUS!!Housing units without a mortgage']
+        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!MORTGAGE STATUS!!Owner-occupied units!!Housing units with a mortgage',
+                      'Estimate!!MORTGAGE STATUS!!Owner-occupied units!!Housing units without a mortgage']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!MORTGAGE STATUS!!Owner-occupied units!!Housing units with a mortgage',
+                      'Percent!!Estimate!!MORTGAGE STATUS!!Owner-occupied units!!Housing units without a mortgage']
+        elif year in ['2010','2011','2012']: 
+            labels = ['Percent!!MORTGAGE STATUS!!Housing units with a mortgage',
+                      'Percent!!MORTGAGE STATUS!!Housing units without a mortgage']
+        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!MORTGAGE STATUS!!Owner-occupied units!!Housing units with a mortgage',
+                      'Percent!!MORTGAGE STATUS!!Owner-occupied units!!Housing units without a mortgage']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!MORTGAGE STATUS!!Owner-occupied units!!Housing units with a mortgage',
+                      'Percent Estimate!!MORTGAGE STATUS!!Owner-occupied units!!Housing units without a mortgage']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    
+    return get_demo_data('DP04',year,geo,labels)
+
+def get_selected_monthly_owner_costs_with_mortgage(year,geo,as_percent=False):
+    
+    # set labels 
+    if not as_percent:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!Less than $300',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$300 to $499',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$500 to $699',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$700 to $999',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$1,000 to $1,499',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$1,500 to $1,999',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$2,000 or more']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Less than $300',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$300 to $499',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$500 to $699',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$700 to $999',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$1,000 to $1,499',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$1,500 to $1,999',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$2,000 or more']
+        elif year in ['2013','2014']:
+            labels = ['Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!Less than $300',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$300 to $499',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$500 to $699',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$700 to $999',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$1,000 to $1,499',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$1,500 to $1,999',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$2,000 or more']
+        elif year in ['2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!Less than $500',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$500 to $999',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$1,000 to $1,499',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$1,500 to $1,999',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$2,000 to $2,499',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$2,500 to $2,999',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$3,000 or more']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!Less than $300',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$300 to $499',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$500 to $699',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$700 to $999',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$1,000 to $1,499',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$1,500 to $1,999',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$2,000 or more']
+        elif year in ['2010','2011','2012']: 
+            labels = ['Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Less than $300',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$300 to $499',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$500 to $699',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$700 to $999',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$1,000 to $1,499',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$1,500 to $1,999',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$2,000 or more']
+        elif year in ['2013','2014']:
+            labels = ['Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!Less than $300',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$300 to $499',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$500 to $699',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$700 to $999',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$1,000 to $1,499',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$1,500 to $1,999',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$2,000 or more']
+        elif year in ['2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!Less than $500',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$500 to $999',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$1,000 to $1,499',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$1,500 to $1,999',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$2,000 to $2,499',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$2,500 to $2,999',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$3,000 or more']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!Less than $500',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$500 to $999',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$1,000 to $1,499',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$1,500 to $1,999',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$2,000 to $2,499',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$2,500 to $2,999',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units with a mortgage!!$3,000 or more']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    
+    return get_demo_data('DP04',year,geo,labels)
+
+def get_selected_monthly_owner_costs_without_mortgage(year,geo,as_percent=False):
+    
+    # set labels 
+    if not as_percent:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!Less than $100',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$100 to $199',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$200 to $299',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$300 to $399',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$400 or more']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Less than $100',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$100 to $199',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$200 to $299',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$300 to $399',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$400 or more']
+        elif year in ['2013','2014']:
+            labels = ['Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!Less than $100',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$100 to $199',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$200 to $299',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$300 to $399',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$400 or more']
+        elif year in ['2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!Less than $250',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$250 to $399',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$400 to $599',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$600 to $799',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$800 to $999',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$1,000 or more']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!Less than $100',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$100 to $199',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$200 to $299',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$300 to $399',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$400 or more']
+        elif year in ['2010','2011','2012']: 
+            labels = ['Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Less than $100',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$100 to $199',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$200 to $299',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$300 to $399',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!$400 or more']
+        elif year in ['2013','2014']:
+            labels = ['Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!Less than $100',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$100 to $199',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$200 to $299',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$300 to $399',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$400 or more']
+        elif year in ['2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!Less than $250',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$250 to $399',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$400 to $599',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$600 to $799',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$800 to $999',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$1,000 or more']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!Less than $250',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$250 to $399',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$400 to $599',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$600 to $799',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$800 to $999',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS (SMOC)!!Housing units without a mortgage!!$1,000 or more']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    
+    
+    return get_demo_data('DP04', year, geo, labels)
+
+def get_SMOCAPI_with_mortgage(year,geo,as_percent=False):
+    
+    # set labels 
+    if not as_percent:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!Less than 20.0 percent',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!20.0 to 24.9 percent',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!25.0 to 29.9 percent',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!30.0 to 34.9 percent',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!35.0 percent or more']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Less than 20.0 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!20.0 to 24.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!25.0 to 29.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!30.0 to 34.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!35.0 percent or more']
+        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!Less than 20.0 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!20.0 to 24.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!25.0 to 29.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!30.0 to 34.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!35.0 percent or more']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!Less than 20.0 percent',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!20.0 to 24.9 percent',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!25.0 to 29.9 percent',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!30.0 to 34.9 percent',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!35.0 percent or more']
+        elif year in ['2010','2011','2012']: 
+            labels = ['Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Less than 20.0 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!20.0 to 24.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!25.0 to 29.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!30.0 to 34.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!35.0 percent or more']
+        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!Less than 20.0 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!20.0 to 24.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!25.0 to 29.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!30.0 to 34.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!35.0 percent or more']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!Less than 20.0 percent',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!20.0 to 24.9 percent',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!25.0 to 29.9 percent',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!30.0 to 34.9 percent',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing units with a mortgage (excluding units where SMOCAPI cannot be computed)!!35.0 percent or more']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    
+    return get_demo_data('DP04',year,geo,labels)
+
+def get_SMOCAPI_without_mortgage(year,geo,as_percent=False,return_index=0):
+    
+    # set labels 
+    if not as_percent:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!Less than 10.0 percent',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!10.0 to 14.9 percent',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!15.0 to 19.9 percent',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!20.0 to 24.9 percent',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!25.0 to 29.9 percent',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!30.0 to 34.9 percent',
+                      'Number!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!35.0 percent or more']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Less than 10.0 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!10.0 to 14.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!15.0 to 19.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!20.0 to 24.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!25.0 to 29.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!30.0 to 34.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!35.0 percent or more']
+        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!Less than 10.0 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!10.0 to 14.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!15.0 to 19.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!20.0 to 24.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!25.0 to 29.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!30.0 to 34.9 percent',
+                      'Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!35.0 percent or more']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!Less than 10.0 percent',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!10.0 to 14.9 percent',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!15.0 to 19.9 percent',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!20.0 to 24.9 percent',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!25.0 to 29.9 percent',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!30.0 to 34.9 percent',
+                      'Percent!!Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!35.0 percent or more']
+        elif year in ['2010','2011','2012']: 
+            labels = ['Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Less than 10.0 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!10.0 to 14.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!15.0 to 19.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!20.0 to 24.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!25.0 to 29.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!30.0 to 34.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!35.0 percent or more']
+        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!Less than 10.0 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!10.0 to 14.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!15.0 to 19.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!20.0 to 24.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!25.0 to 29.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!30.0 to 34.9 percent',
+                      'Percent!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!35.0 percent or more']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!Less than 10.0 percent',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!10.0 to 14.9 percent',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!15.0 to 19.9 percent',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!20.0 to 24.9 percent',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!25.0 to 29.9 percent',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!30.0 to 34.9 percent',
+                      'Percent Estimate!!SELECTED MONTHLY OWNER COSTS AS A PERCENTAGE OF HOUSEHOLD INCOME (SMOCAPI)!!Housing unit without a mortgage (excluding units where SMOCAPI cannot be computed)!!35.0 percent or more']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    
+    # correct for years with multiple labels 
+    if year in ['2010','2011','2012']:
+        return_index = 1
+    
+    return get_demo_data('DP04', year, geo, labels,return_index)
+
+def get_gross_rent(year,geo,as_percent=False):
+    
+    # set labels 
+    if not as_percent:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!GROSS RENT!!Occupied units paying rent!!Less than $200',
+                      'Number!!Estimate!!GROSS RENT!!Occupied units paying rent!!$200 to $299',
+                      'Number!!Estimate!!GROSS RENT!!Occupied units paying rent!!$300 to $499',
+                      'Number!!Estimate!!GROSS RENT!!Occupied units paying rent!!$500 to $749',
+                      'Number!!Estimate!!GROSS RENT!!Occupied units paying rent!!$750 to $999',
+                      'Number!!Estimate!!GROSS RENT!!Occupied units paying rent!!$1,000 to $1,499',
+                      'Number!!Estimate!!GROSS RENT!!Occupied units paying rent!!$1,500 or more']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!GROSS RENT!!Less than $200',
+                      'Estimate!!GROSS RENT!!$200 to $299',
+                      'Estimate!!GROSS RENT!!$300 to $499',
+                      'Estimate!!GROSS RENT!!$500 to $749',
+                      'Estimate!!GROSS RENT!!$750 to $999',
+                      'Estimate!!GROSS RENT!!$1,000 to $1,499',
+                      'Estimate!!GROSS RENT!!$1,500 or more']
+        elif year in ['2013','2014']:
+            labels = ['Estimate!!GROSS RENT!!Occupied units paying rent!!Less than $200',
+                      'Estimate!!GROSS RENT!!Occupied units paying rent!!$200 to $299',
+                      'Estimate!!GROSS RENT!!Occupied units paying rent!!$300 to $499',
+                      'Estimate!!GROSS RENT!!Occupied units paying rent!!$500 to $749',
+                      'Estimate!!GROSS RENT!!Occupied units paying rent!!$750 to $999',
+                      'Estimate!!GROSS RENT!!Occupied units paying rent!!$1,000 to $1,499',
+                      'Estimate!!GROSS RENT!!Occupied units paying rent!!$1,500 or more']
+        elif year in ['2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!GROSS RENT!!Occupied units paying rent!!Less than $500',
+                      'Estimate!!GROSS RENT!!Occupied units paying rent!!$500 to $999',
+                      'Estimate!!GROSS RENT!!Occupied units paying rent!!$1,000 to $1,499',
+                      'Estimate!!GROSS RENT!!Occupied units paying rent!!$1,500 to $1,999',
+                      'Estimate!!GROSS RENT!!Occupied units paying rent!!$2,000 to $2,499',
+                      'Estimate!!GROSS RENT!!Occupied units paying rent!!$2,500 to $2,999',
+                      'Estimate!!GROSS RENT!!Occupied units paying rent!!$3,000 or more']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!GROSS RENT!!Occupied units paying rent!!Less than $200',
+                      'Percent!!Estimate!!GROSS RENT!!Occupied units paying rent!!$200 to $299',
+                      'Percent!!Estimate!!GROSS RENT!!Occupied units paying rent!!$300 to $499',
+                      'Percent!!Estimate!!GROSS RENT!!Occupied units paying rent!!$500 to $749',
+                      'Percent!!Estimate!!GROSS RENT!!Occupied units paying rent!!$750 to $999',
+                      'Percent!!Estimate!!GROSS RENT!!Occupied units paying rent!!$1,000 to $1,499',
+                      'Percent!!Estimate!!GROSS RENT!!Occupied units paying rent!!$1,500 or more']
+        elif year in ['2010','2011','2012']: 
+            labels = ['Percent!!GROSS RENT!!Less than $200',
+                      'Percent!!GROSS RENT!!$200 to $299',
+                      'Percent!!GROSS RENT!!$300 to $499',
+                      'Percent!!GROSS RENT!!$500 to $749',
+                      'Percent!!GROSS RENT!!$750 to $999',
+                      'Percent!!GROSS RENT!!$1,000 to $1,499',
+                      'Percent!!GROSS RENT!!$1,500 or more']
+        elif year in ['2013','2014']:
+            labels = ['Percent!!GROSS RENT!!Occupied units paying rent!!Less than $200',
+                      'Percent!!GROSS RENT!!Occupied units paying rent!!$200 to $299',
+                      'Percent!!GROSS RENT!!Occupied units paying rent!!$300 to $499',
+                      'Percent!!GROSS RENT!!Occupied units paying rent!!$500 to $749',
+                      'Percent!!GROSS RENT!!Occupied units paying rent!!$750 to $999',
+                      'Percent!!GROSS RENT!!Occupied units paying rent!!$1,000 to $1,499',
+                      'Percent!!GROSS RENT!!Occupied units paying rent!!$1,500 or more']
+        elif year in ['2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!GROSS RENT!!Occupied units paying rent!!Less than $500',
+                      'Percent!!GROSS RENT!!Occupied units paying rent!!$500 to $999',
+                      'Percent!!GROSS RENT!!Occupied units paying rent!!$1,000 to $1,499',
+                      'Percent!!GROSS RENT!!Occupied units paying rent!!$1,500 to $1,999',
+                      'Percent!!GROSS RENT!!Occupied units paying rent!!$2,000 to $2,499',
+                      'Percent!!GROSS RENT!!Occupied units paying rent!!$2,500 to $2,999',
+                      'Percent!!GROSS RENT!!Occupied units paying rent!!$3,000 or more']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!GROSS RENT!!Occupied units paying rent!!Less than $500',
+                      'Percent Estimate!!GROSS RENT!!Occupied units paying rent!!$500 to $999',
+                      'Percent Estimate!!GROSS RENT!!Occupied units paying rent!!$1,000 to $1,499',
+                      'Percent Estimate!!GROSS RENT!!Occupied units paying rent!!$1,500 to $1,999',
+                      'Percent Estimate!!GROSS RENT!!Occupied units paying rent!!$2,000 to $2,499',
+                      'Percent Estimate!!GROSS RENT!!Occupied units paying rent!!$2,500 to $2,999',
+                      'Percent Estimate!!GROSS RENT!!Occupied units paying rent!!$3,000 or more']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    
+    return get_demo_data('DP04',year,geo,labels)
+
+def get_GRAPI(year,geo,as_percent=False):
+    
+    # set labels 
+    if not as_percent:
+        if year in ['2009']:
+            labels = ['Number!!Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!Less than 15.0 percent',
+                      'Number!!Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!15.0 to 19.9 percent',
+                      'Number!!Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!20.0 to 24.9 percent',
+                      'Number!!Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!25.0 to 29.9 percent',
+                      'Number!!Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!30.0 to 34.9 percent',
+                      'Number!!Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!35.0 percent or more']
+        elif year in ['2010','2011','2012']:
+            labels = ['Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Less than 15.0 percent',
+                      'Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!15.0 to 19.9 percent',
+                      'Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!20.0 to 24.9 percent',
+                      'Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!25.0 to 29.9 percent',
+                      'Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!30.0 to 34.9 percent',
+                      'Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!35.0 percent or more']
+        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+            labels = ['Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!Less than 15.0 percent',
+                      'Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!15.0 to 19.9 percent',
+                      'Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!20.0 to 24.9 percent',
+                      'Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!25.0 to 29.9 percent',
+                      'Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!30.0 to 34.9 percent',
+                      'Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!35.0 percent or more']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    else:
+        if year in ['2009']:
+            labels = ['Percent!!Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!Less than 15.0 percent',
+                      'Percent!!Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!15.0 to 19.9 percent',
+                      'Percent!!Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!20.0 to 24.9 percent',
+                      'Percent!!Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!25.0 to 29.9 percent',
+                      'Percent!!Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!30.0 to 34.9 percent',
+                      'Percent!!Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!35.0 percent or more']
+        elif year in ['2010','2011','2012']: 
+            labels = ['Percent!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Less than 15.0 percent',
+                      'Percent!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!15.0 to 19.9 percent',
+                      'Percent!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!20.0 to 24.9 percent',
+                      'Percent!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!25.0 to 29.9 percent',
+                      'Percent!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!30.0 to 34.9 percent',
+                      'Percent!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!35.0 percent or more']
+        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+            labels = ['Percent!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!Less than 15.0 percent',
+                      'Percent!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!15.0 to 19.9 percent',
+                      'Percent!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!20.0 to 24.9 percent',
+                      'Percent!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!25.0 to 29.9 percent',
+                      'Percent!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!30.0 to 34.9 percent',
+                      'Percent!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!35.0 percent or more']
+        elif year in ['2017','2018']:
+            labels = ['Percent Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!Less than 15.0 percent',
+                      'Percent Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!15.0 to 19.9 percent',
+                      'Percent Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!20.0 to 24.9 percent',
+                      'Percent Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!25.0 to 29.9 percent',
+                      'Percent Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!30.0 to 34.9 percent',
+                      'Percent Estimate!!GROSS RENT AS A PERCENTAGE OF HOUSEHOLD INCOME (GRAPI)!!Occupied units paying rent (excluding units where GRAPI cannot be computed)!!35.0 percent or more']
+        else:
+            print(f"Error: supported year '{year}'")
+            return None
+    
+    return get_demo_data('DP04',year,geo,labels)
