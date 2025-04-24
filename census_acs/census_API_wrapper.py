@@ -109,8 +109,11 @@ def get_api_dataframe(url):
 def get_ACS_url(year,table,geo):
     
     geo_pseudo_map = {
+        'country': 'pseudo(0100000US$000)',
         'state': 'pseudo(0100000US$0400000)',
         'county': 'pseudo(0100000US$0500000)',
+        'census tract': 'pseudo(0100000US$1400000)',
+        'zip code': 'pseudo(0100000US$8600000)',
         'congressional district': 'pseudo(0100000US$5000000)'
     }
     
