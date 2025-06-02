@@ -1,0 +1,25 @@
+[project]
+name = "fedwrap"
+version = "0.0.3"
+authors = [
+  { name="Mark Aronson", email="mark.aronson@nih.gov" },
+]
+description = "A library of API wrappers for US Federal Government datasets."
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+
+dependencies = [
+    "pandas",
+    "beautifulsoup4",
+    "requests"
+]
+
+[project.urls]
+Homepage = "https://github.com/NIH-ScHARe/SCHARE-tools"
+Issues = "https://github.com/NIH-ScHARe/SCHARE-tools/issues"

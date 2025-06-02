@@ -1,0 +1,20 @@
+Metadata-Version: 2.4
+Name: fedwrap
+Version: 0.0.3
+Summary: A library of API wrappers for US Federal Government datasets.
+Author-email: Mark Aronson <mark.aronson@nih.gov>
+License-Expression: MIT
+Project-URL: Homepage, https://github.com/NIH-ScHARe/SCHARE-tools
+Project-URL: Issues, https://github.com/NIH-ScHARe/SCHARE-tools/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas
+Requires-Dist: beautifulsoup4
+Requires-Dist: requests
+Dynamic: license-file
+
+# SCHARE-tools
+ 

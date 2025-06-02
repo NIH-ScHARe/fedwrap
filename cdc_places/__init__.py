@@ -1,1 +1,0 @@
-from places_utils import get_places_data

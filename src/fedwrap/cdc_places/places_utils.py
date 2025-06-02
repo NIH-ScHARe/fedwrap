@@ -1,5 +1,5 @@
 import requests 
-from config import API_ENDPOINTS, DATA_DICTIONARY_ENDPOINT
+from .config import API_ENDPOINTS, DATA_DICTIONARY_ENDPOINT
 import pandas as pd
 
 def query_api(url, params=None):
