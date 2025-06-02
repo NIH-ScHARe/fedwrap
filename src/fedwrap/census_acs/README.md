@@ -4,6 +4,9 @@ A Python wrapper for the U.S. Census Bureau’s American Community Survey (ACS) 
 
 🛠️ **Installation** 
 
+```bash
+pip install fedwrap
+```
 
 📝 **Instructions**
 

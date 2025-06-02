@@ -1,8 +1,13 @@
 # ignore pycache 
-cdc_places/__pycache__/
-census_acs/__pycache__/
+src/fedwrap/cdc_places/__pycache__/
+src/fedwrap/census_acs/__pycache__/
+*.pyc
 
 # ignore virtual environment
 .venv/
+
+# ignore build artifacts 
+dist/
+
 
 
