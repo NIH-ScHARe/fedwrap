@@ -8,6 +8,6 @@ src/fedwrap/census_acs/__pycache__/
 
 # ignore build artifacts 
 dist/
-
+*.egg-info/
 
 
