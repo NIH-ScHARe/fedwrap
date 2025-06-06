@@ -1,6 +1,7 @@
 import requests 
 from .config import API_ENDPOINTS, DATA_DICTIONARY_ENDPOINT
 import pandas as pd
+from fedwrap.census_acs import get_total_pop 
 
 def query_api(url, params=None):
     """
@@ -90,15 +91,53 @@ def set_query_params(geo, year, measureid=None, datavaluetypeid=None):
 
     return url, params
 
+def get_places_state_data(year,measureid,datavaluetypid):
+
+    # get county level data for requested measure
+    county_data = get_places_data('county',year,measureid,datavaluetypid)
+    county_data['data_value'] = county_data['data_value'].astype('float64')
+
+    # get population data for each county 
+    population_data = get_total_pop(year,'county')
+    
+    # rename FIPS column 
+    population_data['ucgid'] = population_data['ucgid'].astype(str).str[-5:]
+    population_data = population_data.rename(columns={'ucgid':'locationid'})
+
+    # merge on the FIPS code 
+    county_data = county_data.merge(population_data,on='locationid',how='left')
+
+    # compute the population-weighted prevalance 
+    county_data['weighted_p'] = county_data['data_value'] * county_data['Total population'] / 100
+
+    # compute the sum of weighted_p and total population across all counties in each state 
+    state_summary = county_data.groupby('stateabbr')[['weighted_p', 'Total population']].sum().reset_index()
+    
+    # compute the statewide prevalance by dividing the weighted prevalance by the total population 
+    state_summary['data_value'] = (state_summary['weighted_p'] / state_summary['Total population'] * 100).round(1)
+    
+    # drop the us row 
+    state_summary = state_summary[state_summary['stateabbr'] != 'US']
+
+    return state_summary[['stateabbr','data_value']]
+
+
 def get_places_data(geo, year, measureid, datavaluetypid="CrdPrv"):
 
-    # construct the URL and parameters for the API query
-    url, params = set_query_params(
-        geo=geo,
-        year=year,
-        measureid=measureid,  
-        datavaluetypeid=datavaluetypid  
-    )
+    # if state level is requested, compute state values from counties 
+    if geo=='state':
+        return get_places_state_data(year,measureid,datavaluetypid)
+    
+    # otherwise, call the corresponding geography 
+    else:
 
-    # query the API with the constructed URL and parameters
-    return query_api(url, params)
+        # construct the URL and parameters for the API query
+        url, params = set_query_params(
+            geo=geo,
+            year=year,
+            measureid=measureid,  
+            datavaluetypeid=datavaluetypid  
+        )
+
+        # query the API with the constructed URL and parameters
+        return query_api(url, params)

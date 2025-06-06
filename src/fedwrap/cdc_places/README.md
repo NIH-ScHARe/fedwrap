@@ -21,6 +21,7 @@ get_places_data(GEO, YEAR, MEASUREID, DATAVALUETYPID)
 🌐 *GEO*
 
 The GEO parameter sets the geographical division for the data. The PLACES dataset supports the following geographies:
+* state
 * county
 * census
 * zcta
