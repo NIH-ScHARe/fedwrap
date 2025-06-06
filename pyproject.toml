@@ -1,6 +1,6 @@
 [project]
 name = "fedwrap"
-version = "0.0.4"
+version = "0.0.5"
 authors = [
   { name="Mark Aronson", email="mark.aronson@nih.gov" },
 ]
