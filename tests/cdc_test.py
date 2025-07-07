@@ -1,10 +1,10 @@
 from fedwrap.cdc_places import get_places_data
 
 data = get_places_data(
-    geo='county',
+    geo='state',
     year='2022',
-    measureid='ARTHRITIS',
-    datavaluetypid='CrdPrv'
+    measureid='FOODSTAMP',
+    datavaluetypid='AgeAdjPrv'
 )
 
-print(data.head())
+print(data.head(50))

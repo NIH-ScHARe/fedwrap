@@ -198,7 +198,7 @@ def get_race(year,geo,as_percent=False):
                       'Percent!!Race alone or in combination with one or more other races!!Total population!!American Indian and Alaska Native',
                       'Percent!!Race alone or in combination with one or more other races!!Total population!!Asian',
                       'Percent!!Race alone or in combination with one or more other races!!Total population!!Native Hawaiian and Other Pacific Islander',
-                      'Percent!!Race alone or in combination with one or more other races!!Total population!!Some other race']
+                      'Percent!!Race alone or in combination with one or more other races!!Total population!!Some Other Race']
         else:
             print(f"Error: Unsupported year '{year}'")
             return None
@@ -236,4 +236,3 @@ def get_race(year,geo,as_percent=False):
             return None
     
     return get_demo_data('DP05',year,geo,labels)
-

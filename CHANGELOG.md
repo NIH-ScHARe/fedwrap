@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.0.6] - 2025-07-07
+
+### Fixed
+- Fixed captilization on labels for 2022 race data. 
+
 ## [0.0.5] - 2025-06-06
 
 ### Added

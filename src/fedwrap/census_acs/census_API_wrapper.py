@@ -148,5 +148,3 @@ def get_demo_data(table,year,geo,labels,return_index=0):
     data[data.columns[1:]] = data[data.columns[1:]].astype(float)
     
     return data
-
-
