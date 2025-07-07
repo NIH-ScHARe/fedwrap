@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: fedwrap
-Version: 0.0.5
+Version: 0.0.6
 Summary: A library of API wrappers for US Federal Government datasets.
 Author-email: Mark Aronson <mark.aronson@nih.gov>
 License-Expression: MIT
