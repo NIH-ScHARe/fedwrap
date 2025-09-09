@@ -114,11 +114,11 @@ def get_ACS_url(year,table,geo):
         'county': 'pseudo(0100000US$0500000)',
         'census tract': 'pseudo(0100000US$1400000)',
         'zip code': 'pseudo(0100000US$8600000)',
-        'congressional district': 'pseudo(0100000US$5000000)'
+        'congressional district': 'pseudo(0100000US$5000000)',
+        'MSA': 'pseudo(0100000US$31000M1)'
     }
     
     return 'https://api.census.gov/data/' + year + '/acs/acs5/profile?get=group(' + table + ')&ucgid=' + geo_pseudo_map.get(geo) 
-
 
 # ===================================
 # Public API Functions
