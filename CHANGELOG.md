@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.0.8] - 2025-09-12
+
+### Fixed 
+- Fixed a bug in the get_residence_year_ago function for the years 2020-2023
+
+## [0.0.7] - 2025-09-09
+
+### Added
+- Added functionality to support Metropolitan Statistical Areas (MSAs)
+
 ## [0.0.6] - 2025-07-07
 
 ### Fixed
