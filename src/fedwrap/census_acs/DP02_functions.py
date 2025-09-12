@@ -429,12 +429,18 @@ def get_residence_year_ago(year,geo,as_percent=False):
                       'Estimate!!RESIDENCE 1 YEAR AGO!!Different house in the U.S.!!Different county!!Same state',
                       'Estimate!!RESIDENCE 1 YEAR AGO!!Different house in the U.S.!!Different county!!Different state',
                       'Estimate!!RESIDENCE 1 YEAR AGO!!Abroad']
-        elif year in ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']:
+        elif year in ['2013','2014','2015','2016','2017','2018','2019']:
             labels = ['Estimate!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Same house',
                       'Estimate!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Different house in the U.S.!!Same county',
                       'Estimate!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Different house in the U.S.!!Different county!!Same state',
                       'Estimate!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Different house in the U.S.!!Different county!!Different state',
                       'Estimate!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Abroad']
+        elif year in ['2020','2021','2022','2023']:
+            labels = ['Estimate!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Same house',
+                      'Estimate!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Different house (in the U.S. or abroad)!!Different house in the U.S.!!Same county',
+                      'Estimate!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Different house (in the U.S. or abroad)!!Different house in the U.S.!!Different county!!Same state',
+                      'Estimate!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Different house (in the U.S. or abroad)!!Different house in the U.S.!!Different county!!Different state',
+                      'Estimate!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Different house (in the U.S. or abroad)!!Abroad']
         else:
             print(f"Error: Unsupported year '{year}'")
             return None
@@ -451,7 +457,7 @@ def get_residence_year_ago(year,geo,as_percent=False):
                       'Percent!!RESIDENCE 1 YEAR AGO!!Different house in the U.S.!!Different county!!Same state',
                       'Percent!!RESIDENCE 1 YEAR AGO!!Different house in the U.S.!!Different county!!Different state',
                       'Percent!!RESIDENCE 1 YEAR AGO!!Abroad']
-        elif year in ['2013','2014','2015','2016','2019','2020','2021','2022','2023']:
+        elif year in ['2013','2014','2015','2016','2019']:
             labels = ['Percent!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Same house',
                       'Percent!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Different house in the U.S.!!Same county',
                       'Percent!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Different house in the U.S.!!Different county!!Same state',
@@ -463,6 +469,12 @@ def get_residence_year_ago(year,geo,as_percent=False):
                       'Percent Estimate!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Different house in the U.S.!!Different county!!Same state',
                       'Percent Estimate!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Different house in the U.S.!!Different county!!Different state',
                       'Percent Estimate!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Abroad']
+        elif year in ['2020','2021','2022','2023']:
+            labels = ['Percent!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Same house',
+                      'Percent!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Different house (in the U.S. or abroad)!!Different house in the U.S.!!Same county',
+                      'Percent!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Different house (in the U.S. or abroad)!!Different house in the U.S.!!Different county!!Same state',
+                      'Percent!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Different house (in the U.S. or abroad)!!Different house in the U.S.!!Different county!!Different state',
+                      'Percent!!RESIDENCE 1 YEAR AGO!!Population 1 year and over!!Different house (in the U.S. or abroad)!!Abroad']
         else:
             print(f"Error: Unsupported year '{year}'")
             return None
