@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.0.9] - 2025-09-24
+
+### Fixed 
+- Fixed a bug in the get_age function for the years 2019-2023
+
 ## [0.0.8] - 2025-09-12
 
 ### Fixed 
