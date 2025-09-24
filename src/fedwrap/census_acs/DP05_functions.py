@@ -192,13 +192,20 @@ def get_race(year,geo,as_percent=False):
                       'Percent Estimate!!Race alone or in combination with one or more other races!!Total population!!Asian',
                       'Percent Estimate!!Race alone or in combination with one or more other races!!Total population!!Native Hawaiian and Other Pacific Islander',
                       'Percent Estimate!!Race alone or in combination with one or more other races!!Total population!!Some other race']
-        elif year in ['2019','2020','2021','2022','2023']:
+        elif year in ['2019','2020','2021','2022']:
             labels = ['Percent!!Race alone or in combination with one or more other races!!Total population!!White',
                       'Percent!!Race alone or in combination with one or more other races!!Total population!!Black or African American',
                       'Percent!!Race alone or in combination with one or more other races!!Total population!!American Indian and Alaska Native',
                       'Percent!!Race alone or in combination with one or more other races!!Total population!!Asian',
                       'Percent!!Race alone or in combination with one or more other races!!Total population!!Native Hawaiian and Other Pacific Islander',
                       'Percent!!Race alone or in combination with one or more other races!!Total population!!Some other race']
+        elif year in ['2023']:
+            labels = ['Percent!!Race alone or in combination with one or more other races!!Total population!!White',
+                      'Percent!!Race alone or in combination with one or more other races!!Total population!!Black or African American',
+                      'Percent!!Race alone or in combination with one or more other races!!Total population!!American Indian and Alaska Native',
+                      'Percent!!Race alone or in combination with one or more other races!!Total population!!Asian',
+                      'Percent!!Race alone or in combination with one or more other races!!Total population!!Native Hawaiian and Other Pacific Islander',
+                      'Percent!!Race alone or in combination with one or more other races!!Total population!!Some Other Race']
         else:
             print(f"Error: Unsupported year '{year}'")
             return None
@@ -224,13 +231,20 @@ def get_race(year,geo,as_percent=False):
                       'Estimate!!RACE!!Race alone or in combination with one or more other races!!Total population!!Asian',
                       'Estimate!!RACE!!Race alone or in combination with one or more other races!!Total population!!Native Hawaiian and Other Pacific Islander',
                       'Estimate!!RACE!!Race alone or in combination with one or more other races!!Total population!!Some other race']
-        elif year in ['2017','2018','2019','2020','2021','2022','2023']:
+        elif year in ['2017','2018','2019','2020','2021','2022']:
             labels = ['Estimate!!Race alone or in combination with one or more other races!!Total population!!White',
                       'Estimate!!Race alone or in combination with one or more other races!!Total population!!Black or African American',
                       'Estimate!!Race alone or in combination with one or more other races!!Total population!!American Indian and Alaska Native',
                       'Estimate!!Race alone or in combination with one or more other races!!Total population!!Asian',
                       'Estimate!!Race alone or in combination with one or more other races!!Total population!!Native Hawaiian and Other Pacific Islander',
                       'Estimate!!Race alone or in combination with one or more other races!!Total population!!Some other race']
+        elif year in ['2023']:
+            labels = ['Estimate!!Race alone or in combination with one or more other races!!Total population!!White',
+                      'Estimate!!Race alone or in combination with one or more other races!!Total population!!Black or African American',
+                      'Estimate!!Race alone or in combination with one or more other races!!Total population!!American Indian and Alaska Native',
+                      'Estimate!!Race alone or in combination with one or more other races!!Total population!!Asian',
+                      'Estimate!!Race alone or in combination with one or more other races!!Total population!!Native Hawaiian and Other Pacific Islander',
+                      'Estimate!!Race alone or in combination with one or more other races!!Total population!!Some Other Race']
         else:
             print(f"Error: Unsupported year '{year}'")
             return None
