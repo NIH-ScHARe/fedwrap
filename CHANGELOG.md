@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.10] - 2025-09-24
+
+### Fixed 
+- Fixed a bug in the get_age function for the year 2023
+- Updated the project GitHub links on the .toml file
+
 ## [0.0.9] - 2025-09-24
 
 ### Fixed 
