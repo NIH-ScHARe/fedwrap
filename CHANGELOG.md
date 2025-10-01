@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.0] - 2025-10-01
+
+### Enhancements 
+- Added a module for CDC BRFSS
+
 ## [0.0.10] - 2025-09-24
 
 ### Fixed 

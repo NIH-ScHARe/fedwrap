@@ -7,6 +7,9 @@ src/fedwrap.egg-info/SOURCES.txt
 src/fedwrap.egg-info/dependency_links.txt
 src/fedwrap.egg-info/requires.txt
 src/fedwrap.egg-info/top_level.txt
+src/fedwrap/cdc_brfss/__init__.py
+src/fedwrap/cdc_brfss/brfss_utils.py
+src/fedwrap/cdc_brfss/config.py
 src/fedwrap/cdc_places/__init__.py
 src/fedwrap/cdc_places/config.py
 src/fedwrap/cdc_places/places_utils.py
