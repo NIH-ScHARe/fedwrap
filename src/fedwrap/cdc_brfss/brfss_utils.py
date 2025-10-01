@@ -58,36 +58,63 @@ def api_call(url: str, params: dict) -> pd.DataFrame | None:
         return None
 
 def check_breakout(geo, measure, break_out_category) -> bool:
+    """
+    Validates the break_out_category based on the geo and measure.
+    Args:
+        geo (str): Geography type, either 'state' or 'msa'.
+        measure (str): Measure type, either 'crude' or 'age-adjusted'.
+        break_out_category (str): The break out category to validate.
+    Returns:
+        bool: True if the break_out_category is valid for the given geo and measure, False otherwise.
+    """
+    
     if not (geo == "state" and measure == "crude"):
         # For all other datasets, break_out_category MUST be Overall
         if break_out_category != "Overall":
             return False 
     return True 
             
-
-
-def response_columns(df):
+def pivot_response_columns(df, break_out_category):
     """
     Takes the raw data response and consolidates response columns
+
+    Args:
+        df (pd.DataFrame): Raw data response from the API.
+        break_out_category (str): The break out category used in the query.
+    Returns:
+        pd.DataFrame: Pivoted DataFrame with consolidated response columns.
     """
 
+    # if there is a breakout category, pivot both on rponse and category 
+    if break_out_category != "Overall":
+        columns = ['break_out','response']
+    else:
+        columns = ['response']
+
+    # force the data value column to numeric 
     df['data_value'] = pd.to_numeric(df['data_value'], errors="coerce")
 
+    # pivot the table 
     wide = (
         df.pivot_table(
             index='locationabbr',
-            columns='response',
+            columns=columns,
             values='data_value',
         )
         .sort_index()
         .sort_index(axis=1)
     )
 
+    # flatten multiindex columns if necessary
+    if isinstance(wide.columns, pd.MultiIndex):
+        wide.columns = [f"{str(g)} - {str(r)}" for g, r in wide.columns.to_list()]
+
+    # fill NaNs with 0s
     wide = wide.fillna(0)
 
+    # reset index and clean up column names
     wide.columns.name = None
     wide = wide.reset_index().rename(columns={wide.index.name or "index": "locationabbr"})
-
 
     return wide
 
@@ -114,17 +141,18 @@ def get_brfss_data(
     # 3. Resolve endpoint 
     url = get_endpoint(geo, measure)
 
-    # set params 
+    # 4. Set params 
     params = {
             "year" : year,
             "questionid" : question_id,
             "break_out_category" : break_out_category
         }
     
+    # 5. Make API call 
     raw_df = api_call(url, params)
 
-    
-    return response_columns(raw_df)
+    # 6. Pivot the table and return 
+    return pivot_response_columns(raw_df, break_out_category)
 
 
 
