@@ -1,4 +1,4 @@
-from fedwrap.census_acs import get_residence_year_ago, get_race
+from fedwrap import get_residence_year_ago, get_race
 
 # data = get_educational_attainment('2022', 'county', as_percent=True)
 # print(data.head())

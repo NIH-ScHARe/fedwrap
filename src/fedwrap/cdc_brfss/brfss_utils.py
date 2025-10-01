@@ -1,29 +1,55 @@
 import requests 
 import pandas as pd 
-import json 
+from .config import BRFSS_ENDPOINTS, Geography, Measure, Year, BreakOutCategory
 
-def fetch_api_key():
-    # read in api key json file 
-    with open("secrets/api_keys.json") as f: 
-        secrets = json.load(f)
+def get_endpoint(geo: Geography | str, measure: Measure | str) -> str:
+    """
+    Get the appropriate BRFSS endpoint based on geography and measure.
     
-    return secrets["API_Key"]
-
-def get_brfss_data(geo: str, year: int, question_id: str, break_out: str = 'Overall'):
-
-    if geo == "state":
-        url = "https://data.cdc.gov/resource/dttw-5yxu.json"
-    else:
-        url = "https://data.cdc.gov/resource/j32a-sa6u.json"
+    Args: 
+        geo (Geography | str): Geography type, either 'state' or 'msa'.
+        measure (Measure | str): Measure type, either 'crude' or 'age-adjusted'.
+    Returns: 
+        str: The corresponding BRFSS endpoint URL.
+    """
 
     try:
-        
-        params = {
-            "year" : year,
-            "questionid" : question_id,
-            "break_out" : break_out
-        }
-        
+        return BRFSS_ENDPOINTS[geo][measure]
+    except KeyError:
+        valid_geos = list(BRFSS_ENDPOINTS.keys())
+        valid_measures = list(next(iter(BRFSS_ENDPOINTS.values())).keys())
+        raise ValueError(
+            f"Invalid combination: geo={geo}, measure={measure}. "
+            f"Valid geos: {valid_geos}, valid measures: {valid_measures}"
+        )
+
+def check_question(question_id: str, year: Year) -> bool:
+    """
+    Check if a given question ID is valid for the specified year.
+    
+    Args:
+        question_id (str): The question ID to validate.
+        year (Year): The year to check the question against.
+    Returns:
+        bool: True if the question ID is valid for the year, False otherwise.
+    """
+
+    QUESTION_ENDPOINT = BRFSS_ENDPOINTS["questions"]
+
+    # get all questions for the specified year 
+    try:
+        params = {"year": year}
+        response = requests.get(QUESTION_ENDPOINT, params=params)
+        response.raise_for_status()  # Raise an error for bad responses
+        questions = pd.DataFrame(response.json())
+        return question_id in questions['variablename'].values
+    except requests.RequestException as e:
+        print(f"Error querying API: {e}")
+        return False
+
+def api_call(url: str, params: dict) -> pd.DataFrame | None: 
+
+    try:
         response = requests.get(url, params=params)
         response.raise_for_status()  # Raise an error for bad responses
         return pd.DataFrame(response.json())
@@ -31,7 +57,74 @@ def get_brfss_data(geo: str, year: int, question_id: str, break_out: str = 'Over
         print(f"Error querying API: {e}")
         return None
 
-data = get_brfss_data("MMSA", 2023, "ADDEPEV3")
+def check_breakout(geo, measure, break_out_category) -> bool:
+    if not (geo == "state" and measure == "crude"):
+        # For all other datasets, break_out_category MUST be Overall
+        if break_out_category != "Overall":
+            return False 
+    return True 
+            
 
-data.to_csv("src/fedwrap/cdc_brfss/query_result.csv",index=False)
+
+def response_columns(df):
+    """
+    Takes the raw data response and consolidates response columns
+    """
+
+    df['data_value'] = pd.to_numeric(df['data_value'], errors="coerce")
+
+    wide = (
+        df.pivot_table(
+            index='locationabbr',
+            columns='response',
+            values='data_value',
+        )
+        .sort_index()
+        .sort_index(axis=1)
+    )
+
+    wide = wide.fillna(0)
+
+    wide.columns.name = None
+    wide = wide.reset_index().rename(columns={wide.index.name or "index": "locationabbr"})
+
+
+    return wide
+
+def get_brfss_data(
+    geo: Geography | str,
+    measure: Measure | str,
+    year: Year, 
+    question_id: str, 
+    break_out_category: BreakOutCategory | str = 'Overall'
+) -> pd.DataFrame | None:
+
+    # 1. Check question_id validity 
+    if not check_question(question_id, year):
+        raise ValueError(f"Invalid question ID '{question_id}' for year {year}. Please check the question ID and try again.")
+
+    # 2. Validate break_out_category rule
+    if not check_breakout(geo, measure, break_out_category):
+        raise ValueError(
+                f"break_out_category can only be something other than 'Overall' "
+                f"for the state crude dataset. You passed geo='{geo}', measure='{measure}', "
+                f"break_out_category='{break_out_category}'."
+            )
+
+    # 3. Resolve endpoint 
+    url = get_endpoint(geo, measure)
+
+    # set params 
+    params = {
+            "year" : year,
+            "questionid" : question_id,
+            "break_out_category" : break_out_category
+        }
+    
+    raw_df = api_call(url, params)
+
+    
+    return response_columns(raw_df)
+
+
 
