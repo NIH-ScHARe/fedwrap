@@ -1,6 +1,8 @@
 # ignore pycache 
 src/fedwrap/cdc_places/__pycache__/
 src/fedwrap/census_acs/__pycache__/
+src/fedwrap/cdc_brfss/__pycache__/
+src/fedwrap/__pycache__/
 *.pyc
 
 # ignore virtual environment
@@ -9,3 +11,7 @@ src/fedwrap/census_acs/__pycache__/
 # ignore build artifacts 
 dist/
 *.egg-info/
+
+# ignore secrets 
+secrets/ 
+
