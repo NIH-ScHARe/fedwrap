@@ -40,23 +40,32 @@ pip install fedwrap
 ## Quick Start
 
 ```python
-from fedwrap import census_acs, cdc_places
+from fedwrap import get_education_data, get_places_data, get_brfss_data
 
 # Example: Fetch ACS data
-acs_df = census_acs.get_education_data(year=2022, geography="county")
+acs_df = get_education_data(year=2022, geography="county")
 
 # Example: Fetch CDC PLACES data
-places_df = data = get_places_data(
+places_df = get_places_data(
     geo='county',
     year='2022',
     measureid='ARTHRITIS',
     datavaluetypid='CrdPrv'
 )
+
+# Example: Fetch BRFSS data
+brfss_df = get_brfss_data(geo="state",
+            measure="crude",
+            year=2023,
+            question_id="CHECKUP1",
+            break_out_category="Sex")
+
 ```
 ## Modules
 
 - census_acs provides functions for accessing data from the American Community Survey API
-- cdc-places provides functions for accessing data from the CDC PLACES dataset 
+- cdc_places provides functions for accessing data from the CDC PLACES dataset
+- cdc_brfss provides functions for accessing data from the CDC BRFSS dataset
 
 ## Dependencies
 
