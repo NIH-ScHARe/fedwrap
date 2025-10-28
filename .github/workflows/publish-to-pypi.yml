@@ -1,9 +1,6 @@
 name: Publish Python 🐍 distribution 📦 to PyPI
 
-on:
-  push:
-    branches: ["main"]
-  workflow_dispatch:
+on: push
 
 jobs:
   # define the job for building the dist packages and store them for later use
