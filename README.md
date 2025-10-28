@@ -40,10 +40,14 @@ pip install fedwrap
 ## Quick Start
 
 ```python
-from fedwrap import get_education_data, get_places_data, get_brfss_data
+from fedwrap import get_acs_data, get_places_data, get_brfss_data
 
 # Example: Fetch ACS data
-acs_df = get_education_data(year=2022, geography="county")
+acs_df = get_acs_data(
+    measureid="HOUSEHOLD_TYPE", 
+    year=2022, 
+    geography="county"
+)
 
 # Example: Fetch CDC PLACES data
 places_df = get_places_data(

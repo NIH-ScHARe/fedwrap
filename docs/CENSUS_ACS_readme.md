@@ -13,7 +13,7 @@ pip install fedwrap
 Calls to the census_acs occurs through functions for each variable in the ACS dataset. The basic structure of a call is: 
 
 ```python
-get_data(YEAR,GEO,as_percent)
+get_acs_data(MEASUREID,YEAR,GEO,as_percent)
 ```
 **Years**
 
@@ -33,73 +33,73 @@ The following geographical gradations are supported:
 The census_acs wrapper is designed to return either absolute values or relative percentages for all variables. The default is absolute, as would be returned by: 
 
 ```python
-get_total_pop('2023','state')
+get_acs_data('TOTAL_POP','2023','state')
 ```
 
 To get the relative amounts for the values of any variable, set the 'as_percent' parameter to True: 
 
 ```python
-get_total_pop('2023','state',as_percent=True)
+get_acs_data('TOTAL_POP','2023','state',as_percent=True)
 ```
 
 
-**Table of Data and Functions**
+**Table of MEASUREIDs and Functions**
 
-| Variable | Function |
+| Measure ID | Function |
 |-|-|
-Household Type | get_household_type|
-Household Relationship|get_household_relationship|
-Male Marital Status|get_male_marital_status|
-Female Marital Status|get_female_marital_status|
-School Enrollment|get_school_enrollment|
-Educational Attainment|get_educational_attainment|
-Veteran Status|get_veteran_status|
-Residence One Year Ago|get_residence_year_ago|
-Place of Birth|get_place_of_birth|
-US Citizenship Status|get_US_citizenship_status|
-World Region of Foreign Born|get_world_region_of_birth_of_foreign_born|
-Language Spoken at Home|get_language_spoken_at_home|
-Ancestry|get_ancestry|
-Computer and Internet Use|get_computer_and_internet_use|
-Employment Status|get_employment_status|
-Work Commute Method|get_commuting_to_work|
-Occupation|get_occupation|
-Industry|get_industry|
-Class of Worker|get_class_of_worker|
-Household Income Bracket|get_household_income|
-Percent of Households with Earnings|get_households_with_earnings|
-Percent of Households with Social Security|get_households_with_social_security|
-Percent of Households with Retirement Income|get_households_with_retirement_income|
-Percent of Households with Supplemental Security Income|get_households_with_supplemental_security_income|
-Percent of Households with Cash Public Assistance Income|get_households_with_cash_public_assistance_income|
-Percent of Households with SNAP Benefits|get_households_with_SNAP_benefits|
-Family Income Bracket|get_family_income|
-Health Insurance Coverage|get_health_insurance_coverage|
-Housing Occupancy|get_housing_occupancy|
-Units in Housing Structures|get_units_in_structure|
-Housing Structure Built Years|get_year_structure_built|
-Number of Rooms in Housing Structures|get_rooms|
-Number of Bedrooms in Housing Structures|get_bedrooms|
-Housing Tenure|get_housing_tenure|
-Year Household Moved into Unit|get_year_householder_moved_into_unit|
-Vehicles Available|get_vehicles_available|
-House Heating Fuel Source|get_house_heating_fuel|
-Percent of Houses Lacking Complete Plumbing Facilities|get_housing_lacking_complete_plumbing_facilities|
-Percent of Houses Lacking Complete Kitchen Facilities|get_housing_lacking_complete_kitchen_facilities|
-Percent of Houses with no Telephone Service|get_housing_no_telephone_service_available|
-Occupants per Room|get_occupants_per_room|
-Housing Value Brackets|get_housing_value|
-Mortgage Status|get_mortgage_status|
-Owner Monthly Costs for Houses with Mortgages|get_selected_monthly_owner_costs_with_mortgage|
-Owner Monthly Costs for Houses without Mortgages|get_selected_monthly_owner_costs_without_mortgage|
-Owner Monthly Costs as a Percentage of Household Income for Houses with Mortgages|get_SMOCAPI_with_mortgage|
-Owner Monthly Costs as a Percentage of Household Income for Houses without Mortgages|get_SMOCAPI_without_mortgage|
-Gross Rent|get_gross_rent|
-Gross Rent as a Percentage of Household Income|get_GRAPI|
-Total Population|get_total_pop|
-Population by Sex|get_pop_sex|
-Population by Age Bracket|get_age|
-Population by Race|get_race|
+HOUSEHOLD_TYPE | get_household_type|
+HOUSEHOLD_RELATIONSHIP|get_household_relationship|
+MALE_MARITAL_STATUS|get_male_marital_status|
+FEMALE_MARITAL_STATUS|get_female_marital_status|
+SCHOOL_ENROLLMENT|get_school_enrollment|
+EDUCATIONAL_ATTAINMENT|get_educational_attainment|
+VETERAN_STATUS|get_veteran_status|
+RESIDENCE_YEAR_AGO|get_residence_year_ago|
+PLACE_OF_BIRTH|get_place_of_birth|
+US_CITIZENSHIP_STATUS|get_US_citizenship_status|
+WORLD_REGION_OF_BIRTH_OF_FOREIGN_BORN|get_world_region_of_birth_of_foreign_born|
+LANGUAGE_SPOKEN_AT_HOME|get_language_spoken_at_home|
+ANCESTRY|get_ancestry|
+COMPUTER_AND_INTERNET_USE|get_computer_and_internet_use|
+EMPLOYMENT_STATUS|get_employment_status|
+COMMUTING_TO_WORK|get_commuting_to_work|
+OCCUPATION|get_occupation|
+INDUSTRY|get_industry|
+CLASS_OF_WORKER|get_class_of_worker|
+HOUSEHOLD_INCOME|get_household_income|
+HOUSEHOLDS_WITH_EARNINGS|get_households_with_earnings|
+HOUSEHOLDS_WITH_SOCIAL_SECURITY|get_households_with_social_security|
+HOUSEHOLDS_WITH_RETIREMENT_INCOME|get_households_with_retirement_income|
+HOUSEHOLDS_WITH_SUPPLEMENTAL_SECURITY_INCOME|get_households_with_supplemental_security_income|
+HOUSEHOLDS_WITH_CASH_PUBLIC_ASSISTANCE_INCOME|get_households_with_cash_public_assistance_income|
+HOUSEHOLDS_WITH_SNAP_BENEFITS|get_households_with_SNAP_benefits|
+FAMILY_INCOME|get_family_income|
+HEALTH_INSURANCE_COVERAGE|get_health_insurance_coverage|
+HOUSING_OCCUPANCY|get_housing_occupancy|
+UNITS_IN_STRUCTURE|get_units_in_structure|
+YEAR_STRUCTURE_BUILT|get_year_structure_built|
+ROOMS|get_rooms|
+BEDROOMS|get_bedrooms|
+HOUSING_TENURE|get_housing_tenure|
+YEAR_HOUSEHOLDER_MOVED_INTO_UNIT|get_year_householder_moved_into_unit|
+VEHICLES_AVAILABLE|get_vehicles_available|
+HOUSE_HEATING_FUEL|get_house_heating_fuel|
+HOUSING_LACKING_COMPLETE_PLUMBING_FACILITIES|get_housing_lacking_complete_plumbing_facilities|
+HOUSING_LACKING_COMPLETE_KITCHEN_FACILITIES|get_housing_lacking_complete_kitchen_facilities|
+HOUSING_NO_TELEPHONE_SERVICE_AVAILABLE|get_housing_no_telephone_service_available|
+OCCUPANTS_PER_ROOM|get_occupants_per_room|
+HOUSING_VALUE|get_housing_value|
+MORTGAGE_STATUS|get_mortgage_status|
+SELECTED_MONTHLY_OWNER_COSTS_WITH_MORTGAGE|get_selected_monthly_owner_costs_with_mortgage|
+SELECTED_MONTHLY_OWNER_COSTS_WITHOUT_MORTGAGE|get_selected_monthly_owner_costs_without_mortgage|
+SMOCAPI_WITH_MORTGAGE|get_SMOCAPI_with_mortgage|
+SMOCAPI_WITHOUT_MORTGAGE|get_SMOCAPI_without_mortgage|
+GROSS_RENT|get_gross_rent|
+GRAPI|get_GRAPI|
+TOTAL_POP|get_total_pop|
+POP_SEX|get_pop_sex|
+AGE|get_age|
+RACE|get_race|
 
 **List of Values**
 
