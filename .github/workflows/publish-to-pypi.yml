@@ -48,7 +48,7 @@ jobs:
       name: pypi
       url: https://pypi.org/p/fedwrap
     permissions:
-      id-token: write  # IMPORTANT: mandatory for trusted publishing
+      id-token: write
     
     steps:
     - name: Download all the dists
