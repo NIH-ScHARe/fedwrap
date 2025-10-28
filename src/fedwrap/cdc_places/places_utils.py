@@ -1,7 +1,7 @@
 import requests 
 from .config import API_ENDPOINTS, DATA_DICTIONARY_ENDPOINT
 import pandas as pd
-from fedwrap.census_acs import get_total_pop 
+from fedwrap.census_acs import get_acs_data 
 
 def query_api(url, params=None):
     """
@@ -98,7 +98,7 @@ def get_places_state_data(year,measureid,datavaluetypid):
     county_data['data_value'] = county_data['data_value'].astype('float64')
 
     # get population data for each county 
-    population_data = get_total_pop(year,'county')
+    population_data = get_acs_data('TOTAL_POP',year,'county')
     
     # rename FIPS column 
     population_data['ucgid'] = population_data['ucgid'].astype(str).str[-5:]

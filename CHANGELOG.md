@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.0] - 2025-10-27
+- Created Docs folder 
+- Created single function for ACS data
+
 ## [0.1.0] - 2025-10-01
 
 ### Enhancements 
