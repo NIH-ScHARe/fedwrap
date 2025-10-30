@@ -1,3 +1,66 @@
+from enum import Enum 
+from typing import Literal
+
+Year = Literal[
+    2018, 2019, 2020, 2021, 2022
+]
+
+class Geography(str, Enum):
+    COUNTY = "county"
+    CENSUS = "census"
+    ZCTA = "zcta"
+    PLACES = "places"
+
+class MeasureType(str, Enum):
+    CRUDE = "CrdPrv"
+    AGE_ADJUSTED = "AgeAdjPrv"
+
+class MeasureID(str, Enum):
+    ARTHRITIS = "ARTHRITIS"
+    BPHIGH = "BPHIGH"
+    CANCER = "CANCER"
+    CASTHMA = "CASTHMA"
+    CHD = "CHD"
+    COPD = "COPD"
+    DEPRESSION = "DEPRESSION"
+    DIABETES = "DIABETES"
+    HIGHCHOL = "HIGHCHOL"
+    KIDNEY = "KIDNEY"
+    OBESITY = "OBESITY"
+    STROKE = "STROKE"
+    TEETHLOST = "TEETHLOST"
+    BINGE = "BINGE"
+    CSMOKING = "CSMOKING"
+    LPA = "LPA"
+    SLEEP = "SLEEP"
+    GHLTH = "GHLTH"
+    MHLTH = "MHLTH"
+    PHLTH = "PHLTH"
+    ACCESS2 = "ACCESS2"
+    BPMED = "BPMED"
+    CERVICAL = "CERVICAL"
+    CHECKUP = "CHECKUP"
+    CHOLSCREEN = "CHOLSCREEN"
+    COLON_SCREEN = "COLON_SCREEN"
+    COREM = "COREM"
+    COREW = "COREW"
+    DENTAL = "DENTAL"
+    MAMMOUSE = "MAMMOUSE"
+    HEARING = "HEARING"
+    VISION = "VISION"
+    COGNITION = "COGNITION"
+    MOBILITY = "MOBILITY"
+    SELFCARE = "SELFCARE"
+    INDEPLIVE = "INDEPLIVE"
+    DISABILITY = "DISABILITY"
+    ISOLATION = "ISOLATION"
+    FOODSTAMP = "FOODSTAMP"
+    FOODINSECU = "FOODINSECU"
+    HOUSINSECU = "HOUSINSECU"
+    SHUTUTILITY = "SHUTUTILITY"
+    LACKTRPT = "LACKTRPT"
+    EMOTIONSPT = "EMOTIONSPT"
+
 # API Endpoints 
 DATA_DICTIONARY_ENDPOINT = "https://data.cdc.gov/resource/m35w-spkz.json"
 
