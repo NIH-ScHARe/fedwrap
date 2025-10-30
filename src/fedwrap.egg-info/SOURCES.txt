@@ -20,3 +20,4 @@ src/fedwrap/census_acs/DP05_functions.py
 src/fedwrap/census_acs/__init__.py
 src/fedwrap/census_acs/acs.py
 src/fedwrap/census_acs/census_API_wrapper.py
+src/fedwrap/widget/explorer.py

@@ -12,6 +12,7 @@ A Python package providing convenient wrappers for accessing and working with US
   - [Features](#features)
   - [Installation](#installation)
   - [Quick Start](#quick-start)
+  - [Widget](#widget)
   - [Modules](#modules)
   - [Dependencies](#dependencies)
   - [License](#license)
@@ -65,6 +66,16 @@ brfss_df = get_brfss_data(geo="state",
             break_out_category="Sex")
 
 ```
+
+## Widget 
+To browse data using a widget with dropdown menus
+
+```python 
+from fedwrap.widget import display_explorer
+
+display_explorer()
+```
+
 ## Modules
 
 - census_acs provides functions for accessing data from the American Community Survey API
