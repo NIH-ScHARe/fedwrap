@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.1] - 2025-11-04
+
+- Switched CDC PLACES to Pydantic models 
+- Add ipython notebook widget 
+
 ## [1.0.0] - 2025-10-27
 - Created Docs folder 
 - Created single function for ACS data
