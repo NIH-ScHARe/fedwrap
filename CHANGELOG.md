@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.3] - 2025-11-04 
+
+### Fixed
+- Fixed a bug in the Github release workflow
+
 ## [1.0.2] - 2025-11-04
 
 ### Added

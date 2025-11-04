@@ -67,6 +67,11 @@ jobs:
       contents: write  # required to create a release
 
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+
     - name: Download all the dists
       uses: actions/download-artifact@v4
       with:
