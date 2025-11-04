@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.0.5] - 2025-11-04
+
+### Added
+- Added pydantic models for ACS functions 
+
+## [1.0.4] - 2025-11-04
+
+### Fixed 
+- Fixed updating the toml file with version number
+
+## [1.0.3] - 2025-11-04 
+
+### Fixed
+- Fixed a bug in the Github release workflow
+
 ## [1.0.2] - 2025-11-04
 
 ### Added
