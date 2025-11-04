@@ -58,3 +58,50 @@ jobs:
         path: dist/
     - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
+
+  github-release:
+    name: Create GitHub Release 📝 and attach assets
+    needs: [publish-to-pypi]  # ensure PyPI publish succeeded first
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # required to create a release
+
+    steps:
+    - name: Download all the dists
+      uses: actions/download-artifact@v4
+      with:
+        name: python-package-distributions
+        path: dist/
+
+    - name: Extract release notes for current tag
+      run: |
+        set -euo pipefail
+        TAG="${GITHUB_REF_NAME#v}"  # turn v1.0.1 into 1.0.1
+
+        # Try exact match first: "## [1.0.1]"
+        awk -v tag="$TAG" '
+          $0 ~ "^## \\[" tag "\\]" {found=1; next}
+          found && /^## \[/ {exit}
+          found {print}
+        ' CHANGELOG.md > RELEASE_NOTES.md
+
+        # Fallback: take topmost section if exact match not found
+        if [ ! -s RELEASE_NOTES.md ]; then
+          awk '
+            f==0 && /^## \[/ {f=1; next}
+            f==1 && /^## \[/ {exit}
+            f==1 {print}
+          ' CHANGELOG.md > RELEASE_NOTES.md
+        fi
+
+    # Creates a release for the current tag and attaches your artifacts
+    - name: Create Release and upload assets
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ github.ref_name }}
+        name: ${{ github.ref_name }}
+        prerelease: ${{ contains(github.ref_name, '-') }}
+        body_path: RELEASE_NOTES.md
+        files: |
+          dist/*.whl
+          dist/*.tar.gz
