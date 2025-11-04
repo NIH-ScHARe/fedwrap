@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.2] - 2025-11-04
+
+### Added
+- Enhanced workflow pipeline to create Github release
+
 ## [1.0.1] - 2025-11-04
 
 - Switched CDC PLACES to Pydantic models 
