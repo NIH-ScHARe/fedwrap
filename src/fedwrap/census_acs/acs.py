@@ -2,6 +2,8 @@ from fedwrap.census_acs.DP02_functions import get_household_type, get_household_
 from fedwrap.census_acs.DP03_functions import get_employment_status, get_commuting_to_work, get_occupation, get_industry, get_class_of_worker, get_household_income, get_households_with_earnings, get_households_with_social_security, get_households_with_retirement_income, get_households_with_supplemental_security_income, get_households_with_cash_public_assistance_income, get_households_with_SNAP_benefits, get_family_income, get_health_insurance_coverage
 from fedwrap.census_acs.DP04_functions import get_housing_occupancy, get_units_in_structure, get_year_structure_built, get_rooms, get_bedrooms, get_housing_tenure, get_year_householder_moved_into_unit, get_vehicles_available, get_house_heating_fuel, get_housing_lacking_complete_plumbing_facilities, get_housing_lacking_complete_kitchen_facilities, get_housing_no_telephone_service_available, get_occupants_per_room, get_housing_value, get_mortgage_status, get_selected_monthly_owner_costs_with_mortgage, get_selected_monthly_owner_costs_without_mortgage, get_SMOCAPI_with_mortgage, get_SMOCAPI_without_mortgage, get_gross_rent, get_GRAPI
 from fedwrap.census_acs.DP05_functions import get_total_pop, get_pop_sex, get_age, get_race
+from fedwrap.census_acs.config import MeasureID, Geography, Year 
+import pandas as pd 
 
 # Define your mapping once
 measure_function_map = {
@@ -61,7 +63,12 @@ measure_function_map = {
 }
 
 
-def get_acs_data(measureid, year, geo, as_percent=False):
+def get_acs_data(
+        measureid: MeasureID | str, 
+        year: Year, 
+        geo: Geography, 
+        as_percent=False
+    ) -> pd.DataFrame | None:
 
     func = measure_function_map.get(measureid)
     if func:
