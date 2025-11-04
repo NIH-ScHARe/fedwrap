@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.4] - 2025-11-04
+
+### Fixed 
+- Fixed updating the toml file with version number
+
 ## [1.0.3] - 2025-11-04 
 
 ### Fixed
