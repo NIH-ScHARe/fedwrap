@@ -1,4 +1,4 @@
-from fedwrap.cdc_places import get_places_data
+from fedwrap import get_places_data
 
 # data = get_places_data(
 #     geo='state',
@@ -9,7 +9,7 @@ from fedwrap.cdc_places import get_places_data
 
 data = get_places_data(
     geo='census',
-    year='2018',
+    year=2018,
     measureid='ARTHRITIS',
     datavaluetypid='CrdPrv'
 )

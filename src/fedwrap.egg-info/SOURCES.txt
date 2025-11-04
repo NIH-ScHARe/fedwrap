@@ -10,6 +10,7 @@ src/fedwrap.egg-info/top_level.txt
 src/fedwrap/cdc_brfss/__init__.py
 src/fedwrap/cdc_brfss/brfss_utils.py
 src/fedwrap/cdc_brfss/config.py
+src/fedwrap/cdc_brfss/tools.py
 src/fedwrap/cdc_places/__init__.py
 src/fedwrap/cdc_places/config.py
 src/fedwrap/cdc_places/places_utils.py
@@ -20,4 +21,5 @@ src/fedwrap/census_acs/DP05_functions.py
 src/fedwrap/census_acs/__init__.py
 src/fedwrap/census_acs/acs.py
 src/fedwrap/census_acs/census_API_wrapper.py
+src/fedwrap/widget/__init__.py
 src/fedwrap/widget/explorer.py

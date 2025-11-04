@@ -1,5 +1,5 @@
 import requests 
-from .config import API_ENDPOINTS, DATA_DICTIONARY_ENDPOINT
+from .config import API_ENDPOINTS, DATA_DICTIONARY_ENDPOINT, Year, Geography, MeasureType, MeasureID
 import pandas as pd
 from fedwrap.census_acs import get_acs_data 
 
@@ -28,7 +28,10 @@ def query_api(url, params=None):
         return None
 
 
-def get_release_for_year(measureid, year):
+def get_release_for_year(
+        measureid: MeasureID, 
+        year: Year
+    ):
     """
     Looks up the name of the data release for a given measure ID and year.
     
@@ -56,9 +59,12 @@ def get_release_for_year(measureid, year):
     if row.empty:
         print(f"No data found for measure ID: {measureid}")
         return None
-    return row.columns[(row == year).iloc[0]].tolist()[0]
+    return row.columns[(row == str(year)).iloc[0]].tolist()[0]
 
-def get_endpoint_for_geo(geo, release_name):
+def get_endpoint_for_geo(
+        geo: Geography | str, 
+        release_name: str
+    ) -> str | None:
     """
     Retrieves the API endpoint for a given geographic level and data release name.
 
@@ -77,7 +83,12 @@ def get_endpoint_for_geo(geo, release_name):
         return None
     return API_ENDPOINTS[geo][release_name]
 
-def set_query_params(geo, year, measureid=None, datavaluetypeid=None):
+def set_query_params(
+        geo: Geography | str, 
+        year: Year, 
+        measureid: MeasureID | str=None, 
+        datavaluetypeid: MeasureType | str=None
+    ) -> tuple[str, dict]:
     
     # get the API endpoint for the specified geographic level and year
     url = get_endpoint_for_geo(geo, get_release_for_year(measureid, year))
@@ -91,7 +102,11 @@ def set_query_params(geo, year, measureid=None, datavaluetypeid=None):
 
     return url, params
 
-def get_places_state_data(year,measureid,datavaluetypid):
+def get_places_state_data(
+        year: Year,
+        measureid: MeasureID | str,
+        datavaluetypid: MeasureType | str ="CrdPrv"
+    ):
 
     # get county level data for requested measure
     county_data = get_places_data('county',year,measureid,datavaluetypid)
@@ -122,7 +137,12 @@ def get_places_state_data(year,measureid,datavaluetypid):
     return state_summary[['stateabbr','data_value']]
 
 
-def get_places_data(geo, year, measureid, datavaluetypid="CrdPrv"):
+def get_places_data(
+        geo: Geography | str, 
+        year: Year, 
+        measureid: MeasureID | str, 
+        datavaluetypid: MeasureType | str ="CrdPrv"
+    ) -> pd.DataFrame | None:
 
     # if state level is requested, compute state values from counties 
     if geo=='state':
