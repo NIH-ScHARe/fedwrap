@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.0] - 2026-02-12
+
+### Added
+- Added module for CDC Social Vulnerability Index 
+
 ## [1.0.5] - 2025-11-04
 
 ### Added
