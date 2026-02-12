@@ -1,14 +1,5 @@
-from pathlib import Path
 import pandas as pd
-
-VALID_YEARS = {2000, 2010, 2014, 2016, 2018, 2020, 2022}
-VALID_GEOS  = {"tract", "county"}
-
-def list_years():
-    return sorted(VALID_YEARS)
-
-def list_states():
-    return sorted(STATE_FIPS.keys())
+from .svi_utils import _build_url, _download_if_needed, _load_svi_csv, _filter_state
 
 def get_svi(
     year: int,
@@ -30,15 +21,10 @@ def get_svi(
     refresh : bool
         If True, force re-download, ignoring cached file.
     """
-    if year not in VALID_YEARS:
-        raise ValueError(f"Unsupported year={year}; valid options are {sorted(VALID_YEARS)}")
-    if geography not in VALID_GEOS:
-        raise ValueError(f"Unsupported geography={geography}; valid options are {VALID_GEOS}")
 
     url  = _build_url(year, geography)
     path = _download_if_needed(url, refresh=refresh)
-    df   = _load_svi_csv(path)
-    df   = _postprocess(df, geography)
-    df   = _filter_state(df, state)
+    df   = _load_svi_csv(path, year)
+    df   = _filter_state(df, state, year)
 
     return df

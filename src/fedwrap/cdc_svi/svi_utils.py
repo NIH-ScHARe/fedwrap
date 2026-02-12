@@ -49,11 +49,29 @@ def _download_if_needed(url: str, refresh: bool = False) -> Path:
                 f.write(chunk)
     return dest
 
-def _load_svi_csv(path: Path) -> pd.DataFrame:
+def _load_svi_csv(path: Path, year) -> pd.DataFrame:
+    if year == 2000: # skip first row for 2000 data, which contains extra header info
+        return pd.read_csv(path, dtype=str, skiprows=1)  # keep IDs as strings
     return pd.read_csv(path, dtype=str)  # keep IDs as strings
 
+def _filter_state(df: pd.DataFrame, state: str, year: int) -> pd.DataFrame:
+    
+    state_column_name = {
+        2022: "ST_ABBR",
+        2020: "ST_ABBR",
+        2018: "ST_ABBR",
+        2016: "ST_ABBR",
+        2014: "ST_ABBR",
+        2010: "STATE_ABBR",
+        2000: "ST_ABBR"
+    }
+
+    if state is None:
+        return df
+    return df[df[state_column_name[year]] == state]
+
 if __name__ == "__main__":
-    url = _build_url(2010, "county")
+    url = _build_url(2022, "county")
     file_destination = _download_if_needed(url, refresh=True)
     df = _load_svi_csv(file_destination)
     print(df.head())
