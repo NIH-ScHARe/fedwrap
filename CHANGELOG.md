@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.1] - 2026-04-21
+
+### Added
+- Introduced unit test suite covering CDC BRFSS, CDC PLACES, CDC SVI, and Census ACS modules
+
+### Fixed
+- `pivot_response_columns`: preserve all-NaN columns after coercion so pivoted DataFrames always include every response category
+- `get_release_for_year`: return `None` instead of raising `IndexError` when no matching release is found
+- `get_total_pop`: accept optional `as_percent` argument for consistency with all other ACS measure functions
+- `get_ACS_url`: produce a valid string (containing `"None"`) for unrecognised geography values instead of raising `TypeError`
+- Moved `pytest` and `pytest-mock` from runtime dependencies to the `test` optional group
+
 ## [1.1.0] - 2026-02-12
 
 ### Added
