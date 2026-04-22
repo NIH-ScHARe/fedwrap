@@ -16,3 +16,5 @@ dist/
 # ignore secrets 
 secrets/ 
 
+# ignore pytest cache
+.pytest_cache/
