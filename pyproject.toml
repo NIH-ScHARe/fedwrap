@@ -19,8 +19,20 @@ dependencies = [
     "beautifulsoup4",
     "requests",
     "ipywidgets>=8.1.7",
+    "pytest>=8.4.2",
+    "pytest-mock>=3.15.1",
 ]
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-mock"]
 
 [project.urls]
 Homepage = "https://github.com/NIH-ScHARe/fedwrap"
 Issues = "https://github.com/NIH-ScHARe/fedwrap/issues"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+markers = [
+    "integration: marks tests that require live network access (skip in CI by default)",
+]

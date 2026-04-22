@@ -94,12 +94,13 @@ def pivot_response_columns(df, break_out_category):
     # force the data value column to numeric 
     df['data_value'] = pd.to_numeric(df['data_value'], errors="coerce")
 
-    # pivot the table 
+    # pivot the table
     wide = (
         df.pivot_table(
             index='locationabbr',
             columns=columns,
             values='data_value',
+            dropna=False,
         )
         .sort_index()
         .sort_index(axis=1)

@@ -118,7 +118,7 @@ def get_ACS_url(year,table,geo):
         'MSA': 'pseudo(0100000US$31000M1)'
     }
     
-    return 'https://api.census.gov/data/' + year + '/acs/acs5/profile?get=group(' + table + ')&ucgid=' + geo_pseudo_map.get(geo) 
+    return 'https://api.census.gov/data/' + year + '/acs/acs5/profile?get=group(' + table + ')&ucgid=' + str(geo_pseudo_map.get(geo))
 
 # ===================================
 # Public API Functions

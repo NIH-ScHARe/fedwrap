@@ -71,7 +71,8 @@ def get_acs_data(
     ) -> pd.DataFrame | None:
 
     func = measure_function_map.get(measureid)
-    if func:
-        return func(year, geo, as_percent)
-    else:
+    if not func:
         raise ValueError(f"Unknown measure ID: {measureid}")
+    # Re-resolve through module globals so that unittest.mock patches apply.
+    func = globals().get(func.__name__, func)
+    return func(year, geo, as_percent)

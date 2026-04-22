@@ -1,6 +1,6 @@
 from .census_API_wrapper import get_demo_data
 
-def get_total_pop(year,geo):
+def get_total_pop(year,geo,as_percent=False):
     
     # set labels 
     labels = ['Estimate!!SEX AND AGE!!Total population']

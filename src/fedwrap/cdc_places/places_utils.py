@@ -59,7 +59,10 @@ def get_release_for_year(
     if row.empty:
         print(f"No data found for measure ID: {measureid}")
         return None
-    return row.columns[(row == str(year)).iloc[0]].tolist()[0]
+    matches = row.columns[(row == str(year)).iloc[0]].tolist()
+    if not matches:
+        return None
+    return matches[0]
 
 def get_endpoint_for_geo(
         geo: Geography | str, 
