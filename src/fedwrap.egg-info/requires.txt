@@ -1,4 +1,0 @@
-pandas
-beautifulsoup4
-requests
-ipywidgets>=8.1.7
