@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:data.cms.gov)",
+      "Bash(python -c ' *)"
+    ]
+  }
+}
